@@ -1,0 +1,49 @@
+# Main colors
+theme[main_bg]="#2E3440"
+theme[main_fg]="#E5E9F0"
+
+# Title / headers
+theme[title]="#5E81AC"
+theme[hi_fg]="#5E81AC"
+
+# Selected / active
+theme[selected_bg]="#5E81AC"
+theme[selected_fg]="#2E3440"
+
+# Inactive / dim
+theme[inactive_fg]="#D8DEE9"
+
+# Graph colors
+theme[graph_text]="#A3BE8C"
+theme[meter_bg]="#2E3440"
+
+# CPU
+theme[cpu_box]="#5E81AC"
+theme[cpu_start]="#5E81AC"
+theme[cpu_mid]="#A3BE8C"
+theme[cpu_end]="#88C0D0"
+
+# Memory
+theme[mem_box]="#A3BE8C"
+theme[mem_start]="#A3BE8C"
+theme[mem_mid]="#88C0D0"
+theme[mem_end]="#5E81AC"
+
+# Network
+theme[net_box]="#88C0D0"
+theme[net_start]="#88C0D0"
+theme[net_mid]="#5E81AC"
+theme[net_end]="#A3BE8C"
+
+# Borders
+theme[border]="#4C566A"
+theme[box]="#2E3440"
+
+# Process list
+theme[proc_misc]="#D8DEE9"
+theme[proc_misc2]="#A3BE8C"
+
+# Temp / battery / misc
+theme[temp_start]="#5E81AC"
+theme[temp_mid]="#A3BE8C"
+theme[temp_end]="#BF616A"

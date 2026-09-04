@@ -1,0 +1,12 @@
+:root {
+  --background-primary: #131318;
+  --background-secondary: #131318;
+
+  --text-normal: #e4e1e9;
+  --text-muted: #c7c5d0;
+
+  --interactive-accent: #bfc1ff;
+  --interactive-accent-hover: #3e4178;
+
+  --background-modifier-border: #918f9a;
+}

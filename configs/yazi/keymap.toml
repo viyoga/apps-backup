@@ -1,0 +1,45 @@
+[[mgr.prepend_keymap]]
+on = [ "g", "e" ]
+run = "cd /mnt/hdd"
+desc = "cd to /mnt/hdd"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "t" ]
+run = "cd ~/.config/themes"
+desc = "cd to themes dir"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "h" ]
+run = "cd ~"
+desc = "cd to home"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "d" ]
+run = "cd ~/Downloads"
+desc = "cd to Downloads"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "v" ]
+run = "cd ~/Videos"
+desc = "cd to Videos"
+
+[[mgr.prepend_keymap]]
+on = [ "n" ]
+run = "sort"
+desc = "Sort"
+
+[[mgr.prepend_keymap]]
+on = [ "z", "s" ]
+run = "sort size --reverse=yes --dir-first"
+desc = "Sort by size (largest first)"
+
+[[mgr.prepend_keymap]]
+on = [ "z", "a" ]
+run = "sort alphabetical --reverse=no --dir-first"
+desc = "Sort by name A-Z"
+
+[[mgr.prepend_keymap]]
+on = [ "z", "m" ]
+run = "sort mtime --reverse=yes --dir-first"
+desc = "Sort by modified time (newest first)"
+

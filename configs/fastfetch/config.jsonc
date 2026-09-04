@@ -1,0 +1,73 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "color": {"1": "#88c0d0"}, 
+        "source": "~/.config/fastfetch/cat-nord-ff.png",
+        "height": 6,
+        "padding": {
+            "top": 1,
+            "right": 4
+        }
+    },
+    "display": {
+        "color": {
+            "title": "#EBCB8B" 
+        },
+        "separator": " ",
+        "bar": {
+            "border": null
+        }
+    },
+    "modules": [
+        {
+            "type": "title",
+            "keyWidth": 10
+        },
+        "break",
+        {
+            "type": "os",
+            "format": "{name}",
+            "key": " ",
+            "keyColor": "#BF616A",
+            "outputColor": "#E5E9F0" 
+        },
+        {
+            "type": "wm",
+            "format": "{process-name}",
+            "key": " ",
+            "keyColor": "#A3BE8C",
+            "outputColor": "#E5E9F0"
+        },
+        {
+            "type": "shell",
+            "format": "{pretty-name}",
+            "key": " ",
+            "keyColor": "#5E81AC",
+            "outputColor": "#E5E9F0"
+        },
+        {
+            "type": "uptime",
+            "format": "{hours}h {minutes}m",
+            "key": " ",
+            "keyColor": "#EBCB8B",
+            "outputColor": "#E5E9F0"
+        },
+        {
+            "type": "cpu",
+            "format": "{name}",
+            "key": " ",
+            "keyColor": "#8FBCBB",
+            "outputColor": "#E5E9F0"
+        },
+      "break",
+        {
+            "key": " ",
+            "type": "colors",
+            "symbol": "circle",
+            "keyColor": "#4C566A"
+        },
+        "break",
+        "break",
+        "break"
+    ]
+}

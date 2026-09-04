@@ -1,0 +1,10 @@
+vim.g.colors_name = "base16"
+require("matugen").setup()
+vim.api.nvim_set_hl(0, "LineNr", { link = "Comment" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Comment" })
+vim.api.nvim_set_hl(0, "Delimiter", { link = "Comment" })
+vim.api.nvim_set_hl(0, "SpecialChar", { link = "Comment" })
+vim.api.nvim_set_hl(0, "TSPunctDelimiter", { link = "Comment" })
+vim.api.nvim_set_hl(0, "TSPunctSpecial", { link = "Comment" })
+vim.api.nvim_set_hl(0, "TSAnnotation", { link = "Comment" })
+vim.api.nvim_set_hl(0, "TSTagDelimiter", { link = "Comment" })

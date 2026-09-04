@@ -1,0 +1,14 @@
+hl.on("hyprland.start", function()
+	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 21")
+	hl.exec_cmd(
+		"sh -c 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE GTK_THEME && systemctl --user start hyprland-session.target'"
+	)
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface font-name 'Maple Mono NF Medium 11'")
+	hl.exec_cmd("xsettingsd")
+	hl.exec_cmd("mpd")
+	hl.exec_cmd("sh -c 'sleep 2 && mpd-mpris -no-instance'")
+	hl.exec_cmd("/usr/lib/xdg-desktop-portal-hyprland")
+	hl.exec_cmd("/usr/lib/xdg-desktop-portal")
+	hl.exec_cmd("noctalia")
+	hl.exec_cmd("hyprctl dispatch workspace 1")
+end)
