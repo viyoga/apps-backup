@@ -4,45 +4,45 @@
 * stylelint-disable at-rule-no-unknown
 */
 
-@define-color accent_color #95c6a4;
-@define-color accent_bg_color #95c6a4;
-@define-color accent_fg_color #1b221d;
+@define-color accent_color #d85d7b;
+@define-color accent_bg_color #d85d7b;
+@define-color accent_fg_color #13111a;
 
-@define-color destructive_bg_color #fd4663;
-@define-color destructive_fg_color #1b221d;
+@define-color destructive_bg_color #e05a5a;
+@define-color destructive_fg_color #13111a;
 
-@define-color error_bg_color #fd4663;
-@define-color error_fg_color #1b221d;
+@define-color error_bg_color #e05a5a;
+@define-color error_fg_color #13111a;
 
-@define-color window_bg_color #1c211e;
-@define-color window_fg_color #f2f3f2;
+@define-color window_bg_color #13111a;
+@define-color window_fg_color #e2deea;
 
-@define-color view_bg_color #1c211e;
-@define-color view_fg_color #f2f3f2;
+@define-color view_bg_color #13111a;
+@define-color view_fg_color #e2deea;
 
-@define-color headerbar_bg_color #1c211e;
-@define-color headerbar_fg_color #f2f3f2;
+@define-color headerbar_bg_color #13111a;
+@define-color headerbar_fg_color #e2deea;
 @define-color headerbar_backdrop_color @window_bg_color;
 
-@define-color popover_bg_color #2f3732;
-@define-color popover_fg_color #f2f3f2;
+@define-color popover_bg_color #1f1b29;
+@define-color popover_fg_color #e2deea;
 
-@define-color card_bg_color #2f3732;
-@define-color card_fg_color #f2f3f2;
+@define-color card_bg_color #1f1b29;
+@define-color card_fg_color #e2deea;
 
-@define-color dialog_bg_color #1c211e;
-@define-color dialog_fg_color #f2f3f2;
+@define-color dialog_bg_color #13111a;
+@define-color dialog_fg_color #e2deea;
 
-@define-color overview_bg_color #2f3732;
-@define-color overview_fg_color #f2f3f2;
+@define-color overview_bg_color #1f1b29;
+@define-color overview_fg_color #e2deea;
 
-@define-color sidebar_bg_color #1c211e;
-@define-color sidebar_fg_color #f2f3f2;
+@define-color sidebar_bg_color #13111a;
+@define-color sidebar_fg_color #e2deea;
 @define-color sidebar_backdrop_color @window_bg_color;
 @define-color sidebar_border_color @window_bg_color;
 
-@define-color secondary_sidebar_bg_color #1c211e;
-@define-color secondary_sidebar_fg_color #f2f3f2;
+@define-color secondary_sidebar_bg_color #13111a;
+@define-color secondary_sidebar_fg_color #e2deea;
 
 /* Focused selection states */
 @define-color theme_selected_bg_color @accent_bg_color;
@@ -62,14 +62,14 @@
 */
 
 .app-notification {
-  background-color: #171c19;
+  background-color: #191621;
   border-radius: 12px;
   padding: 6px;
   margin: 6px;
 }
 .app-notification label {
-  color: #f2f3f2;
+  color: #e2deea;
 }
 .app-notification button {
-  color: #95c6a4;
+  color: #d85d7b;
 }

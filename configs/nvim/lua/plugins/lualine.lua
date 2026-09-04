@@ -25,22 +25,17 @@ return {
   "nvim-lualine/lualine.nvim",
   opts = function(_, opts)
     opts.options.component_separators = { left = "", right = "" }
-    opts.options.section_separators = { left = "", right = "" }
+    opts.options.section_separators = { left = "", right = "" }
     opts.options.theme = make_transparent()
     opts.sections = {
       lualine_a = {
-        { "mode", separator = { left = "", right = "" } },
+        { "mode", separator = { left = "", right = "" } },
       },
       lualine_b = { { "filename", path = 3, shorting_target = 0 } },
       lualine_c = {},
       lualine_y = {},
       lualine_z = {
-        {
-          function()
-            return " " .. os.date("%R")
-          end,
-          separator = { left = "", right = "" },
-        },
+        { "location", separator = { left = "", right = "" } },
       },
     }
   end,
