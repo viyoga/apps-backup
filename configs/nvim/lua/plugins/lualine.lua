@@ -33,7 +33,12 @@ return {
       },
       lualine_b = { { "filename", path = 3, shorting_target = 0 } },
       lualine_c = {},
-      lualine_y = {},
+      lualine_x = {
+        { "filetype", separator = { left = "", right = "" } },
+      },
+      lualine_y = {
+        { "progress", separator = { left = "", right = "" } },
+      },
       lualine_z = {
         { "location", separator = { left = "", right = "" } },
       },
