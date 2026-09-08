@@ -6,4 +6,4 @@
 
 prettyzap --toggle
 sleep 0.1
-hyprctl dispatch workspace 5
+hyprctl dispatch 'hl.dsp.focus({ workspace = 5 })'
