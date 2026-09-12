@@ -14,6 +14,7 @@ hl.bind("ALT + backslash", hl.dsp.exec_cmd(terminal .. " -e agy"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("obsidian"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("kitty -e tuxedo /home/kabir/Documents/Obsidian-vaults/kittybox/todo.md"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd("kitty -e btop"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("spotify"))
@@ -47,6 +48,8 @@ hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("noctalia msg panel-toggle hiraeth/n
 
 -- Window Management
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/xdm-toggle.sh"))
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("pkill -x xdm-app"))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd("~/.config/hypr/scripts/float-center.sh"))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
