@@ -39,7 +39,7 @@ return {
          ░    ░  ░    ░ ░        ░   ░         ░   
                                 ░                  ]],
 				keys = {
-					{ icon = " ", key = "f", desc = "~/.Home", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "f", desc = "~/Home", action = ":lua Snacks.dashboard.pick('files')" },
 					{
 						icon = " ",
 						key = "c",
@@ -49,7 +49,7 @@ return {
 					{
 						icon = "󱤇 ",
 						key = "d",
-						desc = "~/.dotfiles",
+						desc = "~/dotfiles",
 						action = ":lua Snacks.dashboard.pick('files', {cwd = '~', hidden = true})",
 					},
 					{
