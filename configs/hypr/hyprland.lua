@@ -33,6 +33,5 @@ hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", persistent = true })
 hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", persistent = true })
 hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1", persistent = true })
 
-
 -- For Noctalia Color templates
 require("noctalia").apply_theme()

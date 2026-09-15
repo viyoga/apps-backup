@@ -1,4 +1,5 @@
 vim.opt.number = true
+vim.opt.fileformats = "unix,dos" -- auto-detect CRLF (Windows) files
 vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.signcolumn = "number"

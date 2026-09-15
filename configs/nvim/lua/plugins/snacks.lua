@@ -11,6 +11,16 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 return {
 	"snacks.nvim",
+	keys = {
+		-- Open explorer at the current file's directory
+		{
+			"<leader>e",
+			function()
+				Snacks.explorer({ cwd = vim.fn.expand("%:p:h") })
+			end,
+			desc = "Explorer (File Dir)",
+		},
+	},
 	opts = {
 		dashboard = {
 			width = 50,

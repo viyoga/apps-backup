@@ -22,7 +22,7 @@ hl.config({
 	},
 	scrolling = {
 		fullscreen_on_one_column = true,
-		column_width = 1,
+		column_width = 0.8,
 		focus_fit_method = 1,
 	},
 	decoration = {

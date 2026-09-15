@@ -52,6 +52,7 @@ hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("noctalia msg panel-toggle samuelsko
 hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd("noctalia msg panel-toggle rylos/syncthing:panel"))
 hl.bind(mainMod .. " + F5", hl.dsp.exec_cmd("noctalia msg panel-toggle liamwh/emoji-picker:desktop"))
 hl.bind(mainMod .. " + F6", hl.dsp.exec_cmd("noctalia msg panel-toggle alexmnrs/github-activity:calendar"))
+hl.bind(mainMod .. " + F9", hl.dsp.exec_cmd("noctalia msg panel-toggle ahmedhossamdev/sticky-notes:panel"))
 
 -- Window Management
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
@@ -109,8 +110,8 @@ hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("noctalia msg volume-down 5"), {
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("noctalia msg volume-mute"), { repeating = true, locked = true })
 
 -- Brightness (Noctalia OSD)
-hl.bind("ALT + UP", hl.dsp.exec_cmd("noctalia msg brightness-up 10"))
-hl.bind("ALT + DOWN", hl.dsp.exec_cmd("noctalia msg brightness-down 10"))
+hl.bind("ALT + UP", hl.dsp.exec_cmd("noctalia msg brightness-up 5"))
+hl.bind("ALT + DOWN", hl.dsp.exec_cmd("noctalia msg brightness-down 5"))
 
 -- System
 hl.bind("ALT + SHIFT + S", hl.dsp.exec_cmd("systemctl poweroff"))
