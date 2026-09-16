@@ -73,7 +73,7 @@ return {
       lualine_a = {
         { "mode", separator = { left = "", right = "" }, icon = vim.fn.nr2char(0xE62B) },
       },
-      lualine_b = { { "filename", path = 3, shorting_target = 0, icon = vim.fn.nr2char(0xF0219) } },
+      lualine_b = { { "filename", path = 3, shorting_target = 0 } },
       lualine_c = {},
       lualine_x = {
         { "filetype", separator = { left = "", right = "" } },

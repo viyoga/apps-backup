@@ -87,6 +87,8 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 ytd() {
+    setopt local_options clobber no_monitor no_notify
+
     local dirs=("Videos (root)")
     for d in ~/Videos/*/; do
         [[ -d "$d" ]] && dirs+=("$(basename "$d")")
@@ -95,58 +97,85 @@ ytd() {
     local folder=$(printf "%s\n" "${dirs[@]}" | fzf --prompt="Download to > ")
     [[ -z "$folder" ]] && return
     [[ "$folder" = "Videos (root)" ]] && folder=""
+    local dest_dir="$HOME/Videos${folder:+/$folder}"
 
-    echo -e "\033[1;36m➜ Downloading to: $HOME/Videos/$folder\033[0m"
+    echo -e "\033[1;36m➜ Downloading to: $dest_dir\033[0m"
     printf '\033[33mPaste YouTube link: \033[0m'
     read -r url
     [[ -z "$url" ]] && return
     echo
 
-    # Get video metadata to detect language
-    local lang_info=$(yt-dlp --cookies-from-browser "brave+gnomekeyring:$HOME/.config/BraveSoftware/Brave-Origin-Nightly/Default" -J "$url" 2>/dev/null | python3 -c "
+    local cookies_arg="brave+gnomekeyring:$HOME/.config/BraveSoftware/Brave-Origin-Nightly/Default"
+    local meta_tmp=$(mktemp)
+
+    # Fetch video metadata and cookies in background with a responsive spinner
+    yt-dlp --cookies-from-browser "$cookies_arg" -J "$url" >| "$meta_tmp" 2>/dev/null &
+    local pid=$!
+    trap 'kill $pid 2>/dev/null; rm -f "$meta_tmp"; return 1' INT
+
+    local spin=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏')
+    local i=1
+    while kill -0 $pid 2>/dev/null; do
+        printf "\r\033[36m%s\033[0m \033[33mExtracting cookies from Brave & fetching video metadata...\033[0m" "${spin[$i]}"
+        i=$(( (i % 10) + 1 ))
+        sleep 0.1
+    done
+    wait $pid 2>/dev/null
+    trap - INT
+    printf "\r\033[K"
+
+    # Parse metadata for title and optimal subtitle language
+    local meta_info=$(python3 -c "
 import sys, json
 try:
-    data = json.load(sys.stdin)
-    # Get video spoken language
+    with open(sys.argv[1]) as f:
+        data = json.load(f)
+    title = data.get('title', '')
     vid_lang = data.get('language', '')
-    # Get available automatic captions languages
     acaps = data.get('automatic_captions', {})
-    langs = list(acaps.keys()) if acaps else ''
-    # Output: video_language, available_auto_langs
-    print(f'{vid_lang}|{','.join(langs)}')
-except:
-    print('|')
-" 2>/dev/null)
+    sub = data.get('subtitles', {})
+    sub_lang = ''
+    if vid_lang and vid_lang != 'None':
+        sub_lang = vid_lang
+    elif sub:
+        sub_lang = list(sub.keys())[0]
+    elif acaps:
+        sub_lang = list(acaps.keys())[0]
+    else:
+        sub_lang = 'en'
+    print(f'{title}\t{sub_lang}')
+except Exception:
+    print('\ten')
+" "$meta_tmp" 2>/dev/null)
+    rm -f "$meta_tmp"
 
-    local video_lang=""
-    local auto_langs=""
-    if [[ -n "$lang_info" ]]; then
-        video_lang=$(echo "$lang_info" | cut -d'|' -f1)
-        auto_langs=$(echo "$lang_info" | cut -d'|' -f2)
+    local video_title=""
+    local sub_lang="en"
+    IFS=$'\t' read -r video_title sub_lang <<< "$meta_info"
+
+    if [[ -n "$video_title" ]]; then
+        echo -e "\033[1;32m✔ Video:\033[0m \033[1;37m$video_title\033[0m"
     fi
+    echo -e "\033[1;32m✔ Subtitle language:\033[0m \033[33m$sub_lang\033[0m"
+    echo
 
-    # Determine subtitle language: prefer video's spoken language, then available auto-caps, then English
-    local sub_lang=""
-    if [[ -n "$video_lang" && "$video_lang" != "None" ]]; then
-        # Try video's spoken language first
-        sub_lang="$video_lang"
-    elif [[ -n "$auto_langs" ]]; then
-        # Use first available auto-generated caption language
-        sub_lang=$(echo "$auto_langs" | cut -d',' -f1)
-    fi
-
-    # Fall back to English if nothing else available
-    if [[ -z "$sub_lang" ]]; then
-        sub_lang="en"
-    fi
-
-    echo -e "\033[33mDetected subtitle language: $sub_lang\033[0m"
-
-    yt-dlp --cookies-from-browser "brave+gnomekeyring:$HOME/.config/BraveSoftware/Brave-Origin-Nightly/Default" \
+    # Download: hide noise, show live progress bar
+    yt-dlp --cookies-from-browser "$cookies_arg" \
+        --no-warnings --quiet --progress \
         --write-subs --write-auto-sub --sub-lang "$sub_lang" --convert-subs srt --embed-subs \
         -f "bv*[ext=mp4]+ba[ext=m4a]/best[ext=mp4]/best" \
         --concurrent-fragments 4 --retries 20 --fragment-retries 20 --socket-timeout 30 \
-        -P "$HOME/Videos/$folder" "$url"
+        -P "$dest_dir" "$url"
+
+    local dl_status=$?
+    echo
+    if [[ $dl_status -eq 0 ]]; then
+        echo -e "\033[1;32m✔ Subtitles ($sub_lang) downloaded and embedded\033[0m"
+        echo -e "\033[1;32m✔ Video downloaded successfully\033[0m"
+        echo -e "\033[1;36m➜ Stored in: $dest_dir\033[0m"
+    else
+        echo -e "\033[1;31m✖ Download failed with exit code $dl_status\033[0m"
+    fi
 }
 
 for _t in arcdark atomdark ayu ayu-dark ayu-light ayu-mirage cat-frappe cat-latte \

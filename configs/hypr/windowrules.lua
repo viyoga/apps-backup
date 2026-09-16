@@ -21,6 +21,8 @@ hl.window_rule({
 	name = "solid-gtk-file-picker",
 	match = { class = "^(xdg-desktop-portal-gtk)$" },
 	opaque = true,
+	size = "1150 750",
+	center = true,
 })
 
 hl.window_rule({

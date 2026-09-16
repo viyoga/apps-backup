@@ -20,8 +20,34 @@ return {
 			end,
 			desc = "Explorer (File Dir)",
 		},
+		-- Search entire PC (all files, hidden files, /mnt, external drives)
+		{
+			"<leader>h",
+			function()
+				Snacks.picker.files({
+					cwd = "/",
+					hidden = true,
+					ignored = true,
+					exclude = { "proc", "sys", "dev", "run" },
+				})
+			end,
+			desc = "Find All Files (Entire PC + Hidden)",
+		},
 	},
 	opts = {
+		picker = {
+			sources = {
+				explorer = {
+					win = {
+						list = {
+							keys = {
+								["-"] = "explorer_up", -- also allow '-' to go up parent directory
+							},
+						},
+					},
+				},
+			},
+		},
 		dashboard = {
 			width = 50,
 			sections = {

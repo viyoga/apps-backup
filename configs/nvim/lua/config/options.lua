@@ -19,3 +19,11 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 vim.g.lazyvim_blur = false
+
+-- Completely disable all diagnostics, linters, errors, and warnings globally
+vim.diagnostic.enable(false)
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = false,
+  underline = false,
+})
