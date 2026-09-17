@@ -47,6 +47,7 @@ hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(browser .. " --app=https://re
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.config/hypr/scripts/screen-rec.sh with"))
 hl.bind(mainMod .. " + SHIFT + F1", hl.dsp.exec_cmd("~/.config/hypr/scripts/screen-rec.sh without"))
 hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("~/.config/hypr/scripts/layout-toggle.sh"))
+hl.bind("ALT + semicolon", hl.dsp.exec_cmd("~/.config/hypr/scripts/blur-toggle.sh"))
 hl.bind(mainMod .. " + SHIFT + semicolon", hl.dsp.exec_cmd("~/.config/hypr/scripts/anim-toggle.sh"))
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("noctalia msg panel-toggle hiraeth/noctavibes:panel"))
 hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("noctalia msg panel-toggle samuelskovbakke/calculator-plus:panel"))

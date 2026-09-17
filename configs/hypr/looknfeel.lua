@@ -1,5 +1,19 @@
 require("colors")
 
+-- Glass persistence: Hyprland re-evaluates this file whenever Noctalia
+-- rewrites noctalia.lua (theme/wallpaper change), stomping runtime-only
+-- opacities. Reading the toggle state here makes every re-eval converge to
+-- the persisted mode. Toggle with Alt+; (blur-toggle.sh).
+local glass_on = (function()
+	local f = io.open(os.getenv("HOME") .. "/.cache/hypr-blur-mode", "r")
+	if not f then
+		return false
+	end
+	local v = f:read("*l") or ""
+	f:close()
+	return v == "blur" or v == "glass"
+end)()
+
 hl.config({
 	animations = {
 		enabled = true,
@@ -18,18 +32,18 @@ hl.config({
 		},
 		resize_on_border = false,
 		allow_tearing = false,
-		layout = "master",
+		layout = "dwindle",
 	},
 	scrolling = {
 		fullscreen_on_one_column = true,
-		column_width = 0.8,
+		column_width = 1,
 		focus_fit_method = 1,
 	},
 	decoration = {
 		rounding = 0,
 		rounding_power = 2,
-		active_opacity = 1,
-		inactive_opacity = 1,
+		active_opacity = glass_on and 0.87 or 1,
+		inactive_opacity = glass_on and 0.82 or 1,
 		shadow = {
 			enabled = false,
 			range = 25,
@@ -40,7 +54,7 @@ hl.config({
 			scale = 1.0,
 		},
 		blur = {
-			enabled = true,
+			enabled = glass_on,
 			size = 8,
 			passes = 3,
 			noise = 0.02,
@@ -53,4 +67,4 @@ hl.config({
 	},
 })
 
--- animations moved to animations.lua (slide vs fade profiles)
+-- animations moved to animations.lua

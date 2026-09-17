@@ -34,13 +34,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	name = "float-satty",
-	match = { class = "^(com\\.gabm\\.satty)$" },
-	float = true,
-	center = true,
-})
-
-hl.window_rule({
 	name = "waydroid",
 	match = { class = "^(Waydroid)$" },
 	fullscreen = true,
@@ -79,25 +72,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	name = "opaque-youtube",
-	match = { class = "helium-youtu\\.be__-Default" },
+	name = "opaque-brave-always",
+	match = { class = "^brave-.*" },
 	opaque = true,
-})
-
-hl.window_rule({
-	name = "opaque-chess",
-	match = { class = "helium-www\\.chess\\.com__-Default" },
-	opaque = true,
-})
-
-hl.window_rule({
-	name = "opaque-geoguessr",
-	match = { class = "helium-www\\.geoguessr\\.com__multiplayer-Default" },
-	opaque = true,
-})
-
-hl.window_rule({
-	name = "prettyzap-workspace-5",
-	match = { class = "^(prettyzap)$" },
-	workspace = "5",
 })
