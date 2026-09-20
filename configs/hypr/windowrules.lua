@@ -76,3 +76,15 @@ hl.window_rule({
 	match = { class = "^brave-.*" },
 	opaque = true,
 })
+
+hl.window_rule({
+	name = "opaque-qutebrowser",
+	match = { class = "^(org\\.qutebrowser.*|qutebrowser.*)$" },
+	opaque = true,
+})
+
+hl.window_rule({
+	name = "opaque-helium",
+	match = { class = "^helium.*" },
+	opaque = true,
+})
