@@ -30,6 +30,7 @@ hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zen-browser"))
 hl.bind("ALT + E", hl.dsp.exec_cmd("kitty -e yazi"))
 hl.bind("ALT + N", hl.dsp.exec_cmd("kitty -e nvim"))
 hl.bind("ALT + S", hl.dsp.exec_cmd("sung"))
+hl.bind("ALT + M", hl.dsp.exec_cmd("sonora"))
 hl.bind("ALT + W", hl.dsp.exec_cmd("zapfast"))
 
 -- WebApps
