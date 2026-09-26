@@ -1,6 +1,6 @@
 [mgr]
 ratio = [ 3, 7, 8 ]
-sort_by = "alphabetical"
+sort_by = "mtime"
 sort_dir_first = true
 sort_reverse = false
 

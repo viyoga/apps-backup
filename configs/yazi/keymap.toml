@@ -24,6 +24,16 @@ run = "cd ~/Videos"
 desc = "cd to Videos"
 
 [[mgr.prepend_keymap]]
+on = [ "g", "p" ]
+run = "cd ~/Pictures"
+desc = "cd to Pictures"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "w" ]
+run = "cd ~/Pictures/noctalia-walls"
+desc = "cd to wallpaper dir"
+
+[[mgr.prepend_keymap]]
 on = [ "n" ]
 run = "sort"
 desc = "Sort"

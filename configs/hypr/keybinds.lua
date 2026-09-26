@@ -24,7 +24,6 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("spotify"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("kitty -e rmpc"))
 hl.bind(mainMod .. " + K", hl.dsp.exec_cmd("kitty -o font_size=21 -e typer"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("vesktop"))
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd("serein-maple"))
 hl.bind(mainMod .. " + End", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("kitty -e cliamp"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zen-browser"))
@@ -33,6 +32,7 @@ hl.bind("ALT + N", hl.dsp.exec_cmd("kitty -e nvim"))
 hl.bind("ALT + S", hl.dsp.exec_cmd("sung"))
 hl.bind("ALT + M", hl.dsp.exec_cmd("sonora"))
 hl.bind("ALT + W", hl.dsp.exec_cmd("zapfast"))
+hl.bind("ALT + D", hl.dsp.exec_cmd("serein-maple"))
 
 -- WebApps
 hl.bind(mainMod .. " + SHIFT + O", hl.dsp.exec_cmd(browser .. " --app=https://www.geoguessr.com/multiplayer"))
@@ -54,7 +54,6 @@ hl.bind(mainMod .. " + SHIFT + semicolon", hl.dsp.exec_cmd("~/.config/hypr/scrip
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("noctalia msg panel-toggle hiraeth/noctavibes:panel"))
 hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("noctalia msg panel-toggle samuelskovbakke/calculator-plus:panel"))
 hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd("noctalia msg panel-toggle rylos/syncthing:panel"))
-hl.bind(mainMod .. " + F5", hl.dsp.exec_cmd("noctalia msg panel-toggle liamwh/emoji-picker:desktop"))
 hl.bind(mainMod .. " + F6", hl.dsp.exec_cmd("noctalia msg panel-toggle alexmnrs/github-activity:calendar"))
 hl.bind(mainMod .. " + F9", hl.dsp.exec_cmd("noctalia msg panel-toggle ahmedhossamdev/sticky-notes:panel"))
 
