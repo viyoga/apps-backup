@@ -66,3 +66,5 @@ hl.config({
 		},
 	},
 })
+
+-- animations moved to animations.lua
