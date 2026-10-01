@@ -81,7 +81,8 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"
 hl.bind(mainMod .. " + apostrophe", hl.dsp.exec_cmd("noctalia msg panel-open launcher /emo"))
 hl.bind(mainMod .. " + SHIFT + apostrophe", hl.dsp.exec_cmd("noctalia msg panel-open launcher /kao"))
 hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd('noctalia msg panel-toggle launcher "/web"'))
-hl.bind("ALT  + slash", hl.dsp.exec_cmd('noctalia msg panel-toggle launcher "/"'))
+hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd('noctalia msg panel-toggle launcher "/"'))
+hl.bind("ALT  + slash", hl.dsp.exec_cmd('noctalia msg panel-toggle launcher "/s "'))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center audio"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center network"))
 
