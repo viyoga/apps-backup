@@ -56,14 +56,32 @@ with open(settings_path, "w") as f:
     f.writelines(lines)
 print(f"noctalia opacities: {changed}/3", flush=True)
 assert changed == 3, "expected 3 opacity lines!"
-with open(config_path) as f:
-    cfg = f.read()
-cfg, n = re.subn(r'^transparency_mode\s*=.*$',
-                 f'transparency_mode = "{panel_tr}"', cfg, flags=re.M)
-assert n == 1, "transparency line not found!"
-with open(config_path, "w") as f:
-    f.write(cfg)
-print("panel transparency ok", flush=True)
+
+# 3. Panel transparency. settings.toml is the layer that WINS over config.toml,
+# so it must be written there; config.toml is kept in sync as the fallback for a
+# settings.toml that has no [shell.panel] table yet.
+with open(settings_path) as f:
+    st = f.read()
+m = re.search(r"^(\s*)\[shell\.panel\]\s*$", st, flags=re.M)
+if m is not None and re.search(r"^\s*transparency_mode\s*=", st[m.end():], flags=re.M):
+    start = m.end()
+    head, tail = st[:start], st[start:]
+    tail, n = re.subn(r'^(\s*transparency_mode\s*=\s*).*$',
+                      lambda mm: mm.group(1) + f'"{panel_tr}"', tail, count=1, flags=re.M)
+    st = head + tail
+    assert n == 1, "settings transparency_mode rewrite failed"
+    with open(settings_path, "w") as f:
+        f.write(st)
+    print(f"panel transparency -> {panel_tr} (settings.toml)", flush=True)
+else:
+    with open(config_path) as f:
+        cfg = f.read()
+    cfg, n = re.subn(r'^transparency_mode\s*=.*$',
+                     f'transparency_mode = "{panel_tr}"', cfg, flags=re.M)
+    assert n == 1, "transparency line not found!"
+    with open(config_path, "w") as f:
+        f.write(cfg)
+    print(f"panel transparency -> {panel_tr} (config.toml)", flush=True)
 PYEOF
 noctalia msg config-reload >/dev/null 2>&1 || true
 
