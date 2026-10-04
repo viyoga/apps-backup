@@ -74,6 +74,7 @@ hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("noctalia msg panel-toggle control-ce
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center media"))
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind(mainMod .. " + CTRL + space", hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
+hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd("noctalia msg panel-toggle noctalia/mpvpaper:picker"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center notifications"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
 hl.bind(mainMod .. " + apostrophe", hl.dsp.exec_cmd("noctalia msg panel-open launcher /emo"))

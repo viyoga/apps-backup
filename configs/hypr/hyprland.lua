@@ -27,11 +27,12 @@ hl.layer_rule({
 })
 
 -- Persistent workspaces for Noctalia workspace widget
-hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", persistent = true })
-hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", persistent = true })
-hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", persistent = true })
-hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", persistent = true })
-hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1", persistent = true })
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", default_name = "一", persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", default_name = "二", persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", default_name = "三", persistent = true })
+hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", default_name = "四", persistent = true })
+hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1", default_name = "五", persistent = true })
+
 
 
 
