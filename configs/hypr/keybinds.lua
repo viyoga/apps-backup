@@ -34,6 +34,7 @@ hl.bind("ALT + N", hl.dsp.exec_cmd("kitty -e nvim"))
 hl.bind("ALT + M", hl.dsp.exec_cmd("sonora"))
 hl.bind("ALT + W", hl.dsp.exec_cmd("zapfast"))
 hl.bind("ALT + D", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/serein-focus.sh"))
+hl.bind("ALT + SHIFT + A", hl.dsp.exec_cmd("bash ~/.config/hypr/scripts/kill-tray-apps.sh"))
 
 -- WebApps
 hl.bind(mainMod .. " + SHIFT + O", hl.dsp.exec_cmd(browser .. " --app=https://www.geoguessr.com/multiplayer"))
@@ -75,6 +76,7 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("noctalia msg panel-toggle control-ce
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind(mainMod .. " + CTRL + space", hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
 hl.bind(mainMod .. " + SHIFT + space", hl.dsp.exec_cmd("noctalia msg panel-toggle noctalia/mpvpaper:picker"))
+hl.bind("ALT + space", hl.dsp.exec_cmd("noctalia msg panel-toggle ashur-d/wallpaper-widget:hub"))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center notifications"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("noctalia msg panel-toggle clipboard"))
 hl.bind(mainMod .. " + apostrophe", hl.dsp.exec_cmd("noctalia msg panel-open launcher /emo"))
