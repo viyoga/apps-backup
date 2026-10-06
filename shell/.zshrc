@@ -32,6 +32,7 @@ ZSH_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 [[ -f "$ZSH_CONFIG_DIR/functions.zsh" ]] && source "$ZSH_CONFIG_DIR/functions.zsh"
 [[ -f "$ZSH_CONFIG_DIR/fzf.zsh" ]]       && source "$ZSH_CONFIG_DIR/fzf.zsh"
 [[ -f "$ZSH_CONFIG_DIR/ytd.zsh" ]]       && source "$ZSH_CONFIG_DIR/ytd.zsh"
+[[ -f "$ZSH_CONFIG_DIR/lutgen.zsh" ]]    && source "$ZSH_CONFIG_DIR/lutgen.zsh"
 
 # Powerlevel10k theme configuration
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

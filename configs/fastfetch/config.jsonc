@@ -7,7 +7,8 @@
         },
         "padding": {
             "top": 1,
-            "right": 6
+            "right": 6,
+            "bottom": 1
         }
     },
     "display": {
@@ -48,6 +49,7 @@
         {
             "type": "colors",
             "symbol": "circle"
-        }
+        },
+        "break"
     ]
 }

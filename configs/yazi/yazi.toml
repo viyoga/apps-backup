@@ -2,7 +2,7 @@
 ratio = [ 3, 7, 8 ]
 sort_by = "mtime"
 sort_dir_first = true
-sort_reverse = false
+sort_reverse = true
 
 [preview]
 max_width  = 1200
