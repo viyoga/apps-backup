@@ -96,6 +96,7 @@ hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.layout("colresize -0.1"))
 hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("colresize +0.1"))
 
 -- Screenshots And Other Tools
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("noctalia msg screenshot-annotate"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
 hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("~/.config/hypr/scripts/colorpicker.sh"))

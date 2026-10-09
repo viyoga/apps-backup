@@ -45,7 +45,8 @@ Super + i                → Command Runner
 
 ## Screenshots
 Print                   → Screenshot (Full)
-Shift + Print           → Screenshot (Area + Satty)
+Shift + Print           → Screenshot (Area)
+Super + Print           → Screenshot (Annotate)
 Super + F12             → Color Picker
 Super + F11             → OCR (Textshot)
 Super + F10             → TTS (Read Text)
