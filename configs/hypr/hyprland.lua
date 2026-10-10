@@ -32,6 +32,11 @@ hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", default_name = "二",
 hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1", default_name = "三", persistent = true })
 hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1", default_name = "四", persistent = true })
 hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1", default_name = "五", persistent = true })
+hl.workspace_rule({ workspace = "6", monitor = "HDMI-A-1", default_name = "六" })
+hl.workspace_rule({ workspace = "7", monitor = "HDMI-A-1", default_name = "七" })
+hl.workspace_rule({ workspace = "8", monitor = "HDMI-A-1", default_name = "八" })
+hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1", default_name = "九" })
+hl.workspace_rule({ workspace = "10", monitor = "HDMI-A-1", default_name = "十" })
 
 
 
