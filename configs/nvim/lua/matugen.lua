@@ -2,40 +2,40 @@
 
 function M.setup()
   require('base16-colorscheme').setup({
-    base00 = '#15130f',
-    base01 = '#1f1a13',
-    base02 = '#2c251b',
-    base03 = '#7a6849',
-    base04 = '#c9b99a',
-    base05 = '#f3e9d8',
-    base06 = '#f3e9d8',
-    base07 = '#f3e9d8',
-    base08 = '#e2604a',
-    base09 = '#7fa0b8',
-    base0A = '#b54a32',
-    base0B = '#e8a33d',
-    base0C = '#96c6e9',
-    base0D = '#f1c98d',
-    base0E = '#e9a596',
-    base0F = '#c9b99a',
+    base00 = '#1c1e1a',
+    base01 = '#252722',
+    base02 = '#2f322c',
+    base03 = '#666961',
+    base04 = '#a2b08d',
+    base05 = '#f4f6eb',
+    base06 = '#f4f6eb',
+    base07 = '#f4f6eb',
+    base08 = '#ce7a71',
+    base09 = '#6e857b',
+    base0A = '#948e74',
+    base0B = '#a2b08d',
+    base0C = '#96e9c5',
+    base0D = '#c8e996',
+    base0E = '#e9d996',
+    base0F = '#a2b08d',
   })
 
   local hi = function(group, opts)
     vim.api.nvim_set_hl(0, group, opts)
   end
 
-  hi('TelescopeNormal',         { fg = '#f3e9d8',          bg = '#15130f' })
-  hi('TelescopeBorder',         { fg = '#7a6849',             bg = '#15130f' })
-  hi('TelescopePromptNormal',   { fg = '#f3e9d8',          bg = '#15130f' })
-  hi('TelescopePromptBorder',   { fg = '#7a6849',             bg = '#15130f' })
-  hi('TelescopePromptPrefix',   { fg = '#e8a33d',             bg = '#15130f' })
-  hi('TelescopePromptCounter',  { fg = '#c9b99a',  bg = '#15130f' })
-  hi('TelescopePromptTitle',    { fg = '#15130f',             bg = '#e8a33d' })
-  hi('TelescopePreviewTitle',   { fg = '#15130f',             bg = '#b54a32' })
-  hi('TelescopeResultsTitle',   { fg = '#15130f',             bg = '#7fa0b8' })
-  hi('TelescopeSelection',      { fg = '#f3e9d8',          bg = '#2c251b' })
-  hi('TelescopeSelectionCaret', { fg = '#e8a33d',             bg = '#2c251b' })
-  hi('TelescopeMatching',       { fg = '#e8a33d',             bold = true })
+  hi('TelescopeNormal',         { fg = '#f4f6eb',          bg = '#1c1e1a' })
+  hi('TelescopeBorder',         { fg = '#666961',             bg = '#1c1e1a' })
+  hi('TelescopePromptNormal',   { fg = '#f4f6eb',          bg = '#1c1e1a' })
+  hi('TelescopePromptBorder',   { fg = '#666961',             bg = '#1c1e1a' })
+  hi('TelescopePromptPrefix',   { fg = '#a2b08d',             bg = '#1c1e1a' })
+  hi('TelescopePromptCounter',  { fg = '#a2b08d',  bg = '#1c1e1a' })
+  hi('TelescopePromptTitle',    { fg = '#1c1e1a',             bg = '#a2b08d' })
+  hi('TelescopePreviewTitle',   { fg = '#1c1e1a',             bg = '#948e74' })
+  hi('TelescopeResultsTitle',   { fg = '#1c1e1a',             bg = '#6e857b' })
+  hi('TelescopeSelection',      { fg = '#f4f6eb',          bg = '#2f322c' })
+  hi('TelescopeSelectionCaret', { fg = '#a2b08d',             bg = '#2f322c' })
+  hi('TelescopeMatching',       { fg = '#a2b08d',             bold = true })
 
   hi('Delimiter',               { link = 'Comment' })
   hi('SpecialChar',             { link = 'Comment' })
