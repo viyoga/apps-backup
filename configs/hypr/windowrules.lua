@@ -88,3 +88,10 @@ hl.window_rule({
 	match = { class = "^helium.*" },
 	opaque = true,
 })
+
+hl.window_rule({
+	name = "float-auth-dialogs",
+	match = { class = "^(org\\.kde\\.kwalletd.*|kwalletd.*|pinentry.*|gcr-prompter|polkit.*)$" },
+	float = true,
+	center = true,
+})

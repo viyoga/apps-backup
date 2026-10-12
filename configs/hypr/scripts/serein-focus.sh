@@ -48,6 +48,6 @@ if [ -n "$serein_pid" ]; then
   # Always focus the window
   hyprctl dispatch 'hl.dsp.focus({ window = "class:cz.viceverse.serein" })' >/dev/null 2>&1 || true
 else
-  # Fully closed: launch new instance via Hyprland under XWayland for drag-and-drop support
-  hyprctl dispatch 'hl.dsp.exec_cmd("env -u WAYLAND_DISPLAY serein")' >/dev/null 2>&1 || nohup setsid env -u WAYLAND_DISPLAY serein >/dev/null 2>&1 &
+  # Fully closed: launch new instance natively on Wayland
+  hyprctl eval 'hl.exec_cmd("serein")' >/dev/null 2>&1 || nohup setsid serein >/dev/null 2>&1 &
 fi

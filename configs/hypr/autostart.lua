@@ -1,5 +1,5 @@
 hl.on("hyprland.start", function()
-	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 21")
+	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Custom 21")
 	hl.exec_cmd(
 		"sh -c 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE GTK_THEME && systemctl --user start hyprland-session.target'"
 	)

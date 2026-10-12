@@ -1,6 +1,6 @@
-hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Custom")
 hl.env("XCURSOR_SIZE", "21")
-hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Custom")
 hl.env("HYPRCURSOR_SIZE", "21")
 hl.env("ADW_DISABLE_PORTAL", "1")
 hl.env("GTK_THEME", "adw-gtk3-dark")
