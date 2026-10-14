@@ -1,18 +1,10 @@
 require("colors")
 
--- Glass persistence: Hyprland re-evaluates this file whenever Noctalia
--- rewrites noctalia.lua (theme/wallpaper change), stomping runtime-only
--- opacities. Reading the toggle state here makes every re-eval converge to
--- the persisted mode. Toggle with Alt+; (blur-toggle.sh).
-local glass_on = (function()
-	local f = io.open(os.getenv("HOME") .. "/.cache/hypr-blur-mode", "r")
-	if not f then
-		return false
-	end
-	local v = f:read("*l") or ""
-	f:close()
-	return v == "blur" or v == "glass"
-end)()
+-- Blur/glass permanently disabled by user request (2026-10-14): no
+-- translucency anywhere. The toggle script and its Alt+; bind were removed;
+-- decoration blur and the window opacities below are pinned off so a Noctalia
+-- re-eval of this file cannot re-enable them.
+local glass_on = false
 
 hl.config({
 	animations = {
