@@ -99,7 +99,7 @@ hl.bind(mainMod .. " + SHIFT + period", hl.dsp.layout("colresize +0.1"))
 -- Screenshots And Other Tools
 hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("noctalia msg screenshot-annotate"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
-hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
+hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"), { locked = true })
 hl.bind(mainMod .. " + F12", hl.dsp.exec_cmd("~/.config/hypr/scripts/colorpicker.sh"))
 hl.bind(mainMod .. " + F11", hl.dsp.exec_cmd("~/.config/hypr/scripts/textshot.sh"))
 hl.bind(mainMod .. " + F8", hl.dsp.exec_cmd("noctalia msg panel-toggle noctalia/wallhaven:browser"))

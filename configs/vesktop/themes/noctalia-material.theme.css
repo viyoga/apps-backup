@@ -35,51 +35,51 @@
 :root, .theme-dark, .theme-light {
   /* See options at https://github.com/CapnKitten/Material-Discord */
   /* Accent */
-  --accent-hue: 35;
-  --accent-saturation: 78%;
-  --accent-lightness: 57%;
-  --accent-text-color: #3d2a0c;
+  --accent-hue: 77;
+  --accent-saturation: 30%;
+  --accent-lightness: 58%;
+  --accent-text-color: #161311;
 
   /* App */
-  --app-bg: #15130f;
-  --main-color: #15130f;
-  --main-alt: #15130f;
-  --server-color: #15130f;
-  --status-picker-color: #1f1a13;
-  --sidebar-panel-color: #1f1a13;
-  --chat-color: #15130f;
-  --tooltip-color: #15130f;
-  --tooltip-text-color: #f3e9d8;
+  --app-bg: #161311;
+  --main-color: #161311;
+  --main-alt: #161311;
+  --server-color: #161311;
+  --status-picker-color: #26211e;
+  --sidebar-panel-color: #26211e;
+  --chat-color: #161311;
+  --tooltip-color: #161311;
+  --tooltip-text-color: #e6dfd3;
 
   /* Message */
-  --message-color: #1f1a13;
+  --message-color: #26211e;
   --message-color-hover: hsl(
     var(--accent-hue),
     calc(var(--accent-saturation) * var(--saturation-modifier) * var(--saturation-factor)),
     calc(var(--accent-lightness) * var(--lightness-modifier) * var(--ui-darkness-modifier) * 4)
   ) !important;
-  --message-color-alt: #f5efe6;
-  --attachment-color: #3d2a0c;
-  --main-textarea-color: #e8a33d;
-  --main-textarea-button-color: #3d2a0c;
-  --main-textarea-color-alt: #b54a32;
-  --main-textarea-border: #1f1a13;
+  --message-color-alt: #161311;
+  --attachment-color: #161311;
+  --main-textarea-color: #a2b574;
+  --main-textarea-button-color: #161311;
+  --main-textarea-color-alt: #dfb26c;
+  --main-textarea-border: #26211e;
 
   /* Card */
-  --card-color-filled: #1f1a13;
-  --card-color-hover: #a67226;
-  --card-color-active: #a67226;
-  --card-color-alt: #3e170e;
-  --card-color-alt-hover: #b54a32;
-  --card-border-color: #1f1a13;
-  --card-header-text-color: #f3e9d8;
+  --card-color-filled: #26211e;
+  --card-color-hover: #7b9933;
+  --card-color-active: #7b9933;
+  --card-color-alt: #815817;
+  --card-color-alt-hover: #dfb26c;
+  --card-border-color: #26211e;
+  --card-header-text-color: #e6dfd3;
 
   /* Slider & Switch */
-  --switch-knob-color: #1f1a13;
-  --switch-slider-color: #15130f;
+  --switch-knob-color: #26211e;
+  --switch-slider-color: #161311;
 
   /* Input */
-  --input-text-color: #f3e9d8;
+  --input-text-color: #e6dfd3;
 
   /* Misc */
   --app-watermark-one: "Noctalia";
