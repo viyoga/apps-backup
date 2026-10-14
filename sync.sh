@@ -44,6 +44,10 @@ sync_dir qt5ct
 sync_dir qt6ct
 sync_dir fontconfig
 sync_dir nwg-look
+sync_dir zsh
+sync_dir yt-dlp
+sync_dir imv
+sync_dir bat
 
 # --- mpd: only conf + playlists (skip log/database/state/sticker) ---
 mkdir -p "$DEST/mpd/playlists"
@@ -56,11 +60,22 @@ cp -f "$CFG/obsidian/obsidian.json" "$DEST/obsidian/obsidian.json" 2>/dev/null |
 rsync -a --delete "$CFG/obsidian/snippets/" "$DEST/obsidian/snippets/" 2>/dev/null || true
 # NOTE: real vaults live in ~/Documents/Obsidian-vaults/ — back those up separately
 
+# --- vesktop: only settings + themes (skip sessionData/Cache/Crashpad) ---
+mkdir -p "$DEST/vesktop/settings" "$DEST/vesktop/themes"
+cp -f "$CFG/vesktop/settings.json" "$DEST/vesktop/settings.json" 2>/dev/null || true
+cp -f "$CFG/vesktop/settings/settings.json" "$DEST/vesktop/settings/settings.json" 2>/dev/null || true
+cp -f "$CFG/vesktop/settings/quickCss.css" "$DEST/vesktop/settings/quickCss.css" 2>/dev/null || true
+rsync -a --delete --exclude='*.bak*' "$CFG/vesktop/themes/" "$DEST/vesktop/themes/" 2>/dev/null || true
+
+# --- browser flags ---
+for f in "$CFG"/brave*-flags.conf; do
+  [ -f "$f" ] && cp -f "$f" "$DEST/"
+done
+
 # --- shell ---
-for f in .zshrc .zpreztorc .p10k.zsh .bashrc; do
+for f in .zshrc .zpreztorc .p10k.zsh .zprofile .zshenv .zlogin .zlogout .bashrc .bash_profile; do
   [ -f "$HOME/$f" ] && cp -f "$HOME/$f" "$SHELL_DEST/$f"
 done
-[ -f "$CFG/starship.toml" ] && cp -f "$CFG/starship.toml" "$SHELL_DEST/starship.toml"
 
 notify() {
   noctalia msg notification-show "Apps backup" "$1" >/dev/null 2>&1 || true

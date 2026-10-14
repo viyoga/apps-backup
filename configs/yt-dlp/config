@@ -1,0 +1,2 @@
+--extractor-args "youtubepot-bgutilscript:script_path=/home/kabir/.local/opt/bgutil-ytdlp-pot-provider/server/build/generate_once.js"
+--force-ipv4

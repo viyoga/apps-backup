@@ -24,11 +24,16 @@ Backup of selected app configs (not the whole `~/.config`). Same pattern as `noc
 | kitty | `~/.config/kitty` |
 | btop, cava | `~/.config/btop`, `~/.config/cava` |
 | theming | `Kvantum`, `qt5ct`, `qt6ct`, `fontconfig`, `nwg-look` |
-| shell | `~/.zshrc`, `~/.zpreztorc`, `~/.p10k.zsh`, `~/.bashrc`, `~/.config/starship.toml` → `shell/` |
+| zsh modular | `~/.config/zsh` (`aliases`, `functions`, `fzf`, `lutgen`, `ytd`, `plugins`) |
+| utilities | `~/.config/yt-dlp`, `~/.config/imv`, `~/.config/bat` |
+| vesktop | `~/.config/vesktop/settings.json`, `settings/`, `themes/` |
+| browser flags | `~/.config/brave*-flags.conf` |
+| shell | `~/.zshrc`, `~/.zpreztorc`, `~/.p10k.zsh`, `~/.zprofile`, `~/.zshenv`, `~/.zlogin`, `~/.zlogout`, `~/.bashrc`, `~/.bash_profile` → `shell/` |
 
 ## Deliberately excluded
 
 - `~/.config/obsidian` Cache/GPUCache/blob_storage (~300MB Electron junk). Real vaults are in `~/Documents/Obsidian-vaults/` — back those up separately.
+- `~/.config/vesktop` `sessionData`, `Crashpad`, `Code Cache` (tokens and session caches).
 - `mpd` log/database/state (`log` alone was 16MB).
 - `mpv` `watch_later/` (resume-file spam).
 - `*.bak*`, `*.old`, `*~` files (Hyprland/gtk/etc litter these).
