@@ -4,45 +4,45 @@
 * stylelint-disable at-rule-no-unknown
 */
 
-@define-color accent_color #a2b574;
-@define-color accent_bg_color #a2b574;
-@define-color accent_fg_color #161311;
+@define-color accent_color #a68866;
+@define-color accent_bg_color #a68866;
+@define-color accent_fg_color #181410;
 
-@define-color destructive_bg_color #e37874;
-@define-color destructive_fg_color #161311;
+@define-color destructive_bg_color #b87a59;
+@define-color destructive_fg_color #181410;
 
-@define-color error_bg_color #e37874;
-@define-color error_fg_color #161311;
+@define-color error_bg_color #b87a59;
+@define-color error_fg_color #181410;
 
-@define-color window_bg_color #161311;
-@define-color window_fg_color #e6dfd3;
+@define-color window_bg_color #181410;
+@define-color window_fg_color #f5efe5;
 
-@define-color view_bg_color #161311;
-@define-color view_fg_color #e6dfd3;
+@define-color view_bg_color #181410;
+@define-color view_fg_color #f5efe5;
 
-@define-color headerbar_bg_color #161311;
-@define-color headerbar_fg_color #e6dfd3;
+@define-color headerbar_bg_color #181410;
+@define-color headerbar_fg_color #f5efe5;
 @define-color headerbar_backdrop_color @window_bg_color;
 
-@define-color popover_bg_color #26211e;
-@define-color popover_fg_color #e6dfd3;
+@define-color popover_bg_color #241e18;
+@define-color popover_fg_color #f5efe5;
 
-@define-color card_bg_color #26211e;
-@define-color card_fg_color #e6dfd3;
+@define-color card_bg_color #241e18;
+@define-color card_fg_color #f5efe5;
 
-@define-color dialog_bg_color #161311;
-@define-color dialog_fg_color #e6dfd3;
+@define-color dialog_bg_color #181410;
+@define-color dialog_fg_color #f5efe5;
 
-@define-color overview_bg_color #26211e;
-@define-color overview_fg_color #e6dfd3;
+@define-color overview_bg_color #241e18;
+@define-color overview_fg_color #f5efe5;
 
-@define-color sidebar_bg_color #161311;
-@define-color sidebar_fg_color #e6dfd3;
+@define-color sidebar_bg_color #181410;
+@define-color sidebar_fg_color #f5efe5;
 @define-color sidebar_backdrop_color @window_bg_color;
 @define-color sidebar_border_color @window_bg_color;
 
-@define-color secondary_sidebar_bg_color #161311;
-@define-color secondary_sidebar_fg_color #e6dfd3;
+@define-color secondary_sidebar_bg_color #181410;
+@define-color secondary_sidebar_fg_color #f5efe5;
 
 /* Focused selection states */
 @define-color theme_selected_bg_color @accent_bg_color;
@@ -62,16 +62,16 @@
 */
 
 .app-notification {
-  background-color: #1e1a17;
+  background-color: #1e1914;
   border-radius: 12px;
   padding: 6px;
   margin: 6px;
 }
 .app-notification label {
-  color: #e6dfd3;
+  color: #f5efe5;
 }
 .app-notification button {
-  color: #a2b574;
+  color: #a68866;
 }
 
 /* Sharp Corners — universal selector (proven approach from backup, was various: 9px/5px/15px → 0) */

@@ -13,6 +13,8 @@ alias cm='cmatrix-noctalia'
 alias hdd='cd /mnt/hdd && yazi'
 alias yz='yazi'
 alias asciiquarium='asciiquarium -t'
+alias tt='tubetui'
+alias ym='ytm'
 
 # Package management
 alias iy='yay -S'
