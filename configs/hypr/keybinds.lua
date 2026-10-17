@@ -87,6 +87,7 @@ hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd('noctalia msg panel-toggl
 hl.bind("ALT  + slash", hl.dsp.exec_cmd('noctalia msg panel-toggle launcher "/s "'))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center audio"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center network"))
+hl.bind("ALT + O", hl.dsp.exec_cmd("noctalia msg panel-toggle control-center bluetooth"))
 
 -- Scrolling Layout
 hl.bind(mainMod .. " + comma", hl.dsp.layout("move -col"))

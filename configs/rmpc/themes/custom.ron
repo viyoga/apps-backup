@@ -6,55 +6,55 @@
     show_song_table_header: true,
     draw_borders: true,
     browser_column_widths: [0, 55, 45],
-    text_color: "#f5efe5",
+    text_color: "#b19f8d",
     tab_bar: (
-        active_style: (fg: "#181410", bg: "#a68866", modifiers: "Bold"),
-        inactive_style: (fg: "#f5efe5", modifiers: "Bold"),
+        active_style: (fg: "#141211", bg: "#cbaa7f", modifiers: "Bold"),
+        inactive_style: (fg: "#b19f8d", modifiers: "Bold"),
     ),
-    highlighted_item_style: (fg: "#a68866", modifiers: "Bold"),
-    current_item_style: (fg: "#a68866", bg: "#241e18", modifiers: "Bold"),
-    borders_style: (fg: "#f5efe5", modifiers: "", border_symbols: Library("sharp")),
-    highlight_border_style: (fg: "#a68866"),
+    highlighted_item_style: (fg: "#cbaa7f", modifiers: "Bold"),
+    current_item_style: (fg: "#cbaa7f", bg: "#1c1e1e", modifiers: "Bold"),
+    borders_style: (fg: "#b19f8d", modifiers: "", border_symbols: Library("sharp")),
+    highlight_border_style: (fg: "#cbaa7f"),
     symbols: (
         song: "󰝚 ",
         dir: " ",
         playlist: "󰲸 ",
         marker: "* ",
         ellipsis: "...",
-        song_style: (fg: "#a68866"),
-        dir_style: (fg: "#f5efe5", modifiers: ""),
+        song_style: (fg: "#cbaa7f"),
+        dir_style: (fg: "#b19f8d", modifiers: ""),
     ),
     progress_bar: (
         symbols: ["", "|", "|", "⋮", ""],
-        track_style: (fg: "#241e18"),
-        elapsed_style: (fg: "#a68866"),
-        thumb_style: (fg: "#a68866"),
+        track_style: (fg: "#1c1e1e"),
+        elapsed_style: (fg: "#cbaa7f"),
+        thumb_style: (fg: "#cbaa7f"),
         use_track_when_empty: false,
     ),
     scrollbar: (
         symbols: ["│", "█", "▲", "▼"],
-        track_style: (fg: "#f5efe5"),
-        ends_style: (fg: "#a68866"),
-        thumb_style: (fg: "#a68866"),
+        track_style: (fg: "#b19f8d"),
+        ends_style: (fg: "#cbaa7f"),
+        thumb_style: (fg: "#cbaa7f"),
     ),
     song_table_format: [
         (
-            prop: (kind: Property(Title), style: (fg: "#f5efe5"),
-                default: (kind: Text("Unknown"), style: (fg: "#f5efe5"))),
+            prop: (kind: Property(Title), style: (fg: "#b19f8d"),
+                default: (kind: Text("Unknown"), style: (fg: "#b19f8d"))),
             width: "55%",
-            label_prop: (kind: Text("Title"), style: (fg: "#a68866", modifiers: "Bold")),
+            label_prop: (kind: Text("Title"), style: (fg: "#cbaa7f", modifiers: "Bold")),
         ),
         (
-            prop: (kind: Property(Artist), style: (fg: "#f5efe5"),
-                default: (kind: Text("Unknown"), style: (fg: "#f5efe5"))),
+            prop: (kind: Property(Artist), style: (fg: "#b19f8d"),
+                default: (kind: Text("Unknown"), style: (fg: "#b19f8d"))),
             width: "35%",
-            label_prop: (kind: Text("Artist"), style: (fg: "#c2a37f", modifiers: "Bold")),
+            label_prop: (kind: Text("Artist"), style: (fg: "#597885", modifiers: "Bold")),
         ),
         (
-            prop: (kind: Property(Duration), style: (fg: "#f5efe5"),
-                default: (kind: Text("-"), style: (fg: "#f5efe5"))),
+            prop: (kind: Property(Duration), style: (fg: "#b19f8d"),
+                default: (kind: Text("-"), style: (fg: "#b19f8d"))),
             width: "10%",
-            label_prop: (kind: Text("Duration"), style: (fg: "#f5efe5", modifiers: "Bold")),
+            label_prop: (kind: Text("Duration"), style: (fg: "#b19f8d", modifiers: "Bold")),
             alignment: Right,
         ),
     ],
@@ -62,9 +62,9 @@
         rows: [
             (
                 left: [
-                    (kind: Text("["), style: (fg: "#a68866", modifiers: "Bold")),
-                    (kind: Property(Status(StateV2(playing_label: "Playing", paused_label: "Paused", stopped_label: "Stopped"))), style: (fg: "#a68866", modifiers: "Bold")),
-                    (kind: Text("]"), style: (fg: "#a68866", modifiers: "Bold")),
+                    (kind: Text("["), style: (fg: "#cbaa7f", modifiers: "Bold")),
+                    (kind: Property(Status(StateV2(playing_label: "Playing", paused_label: "Paused", stopped_label: "Stopped"))), style: (fg: "#cbaa7f", modifiers: "Bold")),
+                    (kind: Text("]"), style: (fg: "#cbaa7f", modifiers: "Bold")),
                 ],
                 center: [
                     (kind: Property(Song(Title)), style: (modifiers: "Bold"),
@@ -72,7 +72,7 @@
                     )
                 ],
                 right: [
-                    (kind: Text("Vol "), style: (fg: "#a68866")),
+                    (kind: Text("Vol "), style: (fg: "#cbaa7f")),
                     (kind: Transform(Replace(content: (kind: Property(Status(Volume))), replacements: [
                     (match: "0", replace: (kind: Text("┈┈┈┈┈┈┈┈┈┈┈┈"))),
                     (match: "5", replace: (kind: Text("━┈┈┈┈┈┈┈┈┈┈┈"))),
@@ -95,10 +95,10 @@
                     (match: "90", replace: (kind: Text("━━━━━━━━━━━┈"))),
                     (match: "95", replace: (kind: Text("━━━━━━━━━━━┈"))),
                     (match: "100", replace: (kind: Text("━━━━━━━━━━━━")))
-                    ])), style: (fg: "#a68866")),
-                    (kind: Text(" "), style: (fg: "#a68866")),
-                    (kind: Property(Status(Volume)), style: (fg: "#a68866")),
-                    (kind: Text("%"), style: (fg: "#a68866")),
+                    ])), style: (fg: "#cbaa7f")),
+                    (kind: Text(" "), style: (fg: "#cbaa7f")),
+                    (kind: Property(Status(Volume)), style: (fg: "#cbaa7f")),
+                    (kind: Text("%"), style: (fg: "#cbaa7f")),
                 ]
             ),
             (
@@ -111,11 +111,11 @@
                     (kind: Text(" kbps)")),
                 ],
                 center: [
-                    (kind: Property(Song(Artist)), style: (fg: "#c2a37f", modifiers: "Bold"),
-                        default: (kind: Text("Unknown"), style: (fg: "#c2a37f", modifiers: "Bold"))
+                    (kind: Property(Song(Artist)), style: (fg: "#597885", modifiers: "Bold"),
+                        default: (kind: Text("Unknown"), style: (fg: "#597885", modifiers: "Bold"))
                     ),
                     (kind: Text(" - ")),
-                    (kind: Property(Song(Album)), style: (fg: "#a68866"),
+                    (kind: Property(Song(Album)), style: (fg: "#cbaa7f"),
                         default: (kind: Text("Unknown Album"))
                     ),
                 ],
@@ -123,18 +123,18 @@
 (kind: Property(Status(RandomV2(
                         on_label: "[x]Random",
                         off_label: "[x]Random",
-                        on_style: (fg: "#c2a37f", modifiers: "Bold"),
-                        off_style: (fg: "#f5efe5", modifiers: "Dim"),
+                        on_style: (fg: "#597885", modifiers: "Bold"),
+                        off_style: (fg: "#b19f8d", modifiers: "Dim"),
                     )))),
                     (kind: Text("  ")),
                     (kind: Property(Status(SingleV2(
                         on_label: "[v]Single",
                         off_label: "[v]Single",
                         oneshot_label: "[v]Single",
-                        on_style: (fg: "#c2a37f", modifiers: "Bold"),
-                        off_style: (fg: "#f5efe5", modifiers: "Dim"),
-                        oneshot_style: (fg: "#c2a37f", modifiers: "Bold"),
-                        off_oneshot_style: (fg: "#f5efe5", modifiers: "Dim"),
+                        on_style: (fg: "#597885", modifiers: "Bold"),
+                        off_style: (fg: "#b19f8d", modifiers: "Dim"),
+                        oneshot_style: (fg: "#597885", modifiers: "Bold"),
+                        off_oneshot_style: (fg: "#b19f8d", modifiers: "Dim"),
                     )))),
                 ]
             ),
@@ -145,10 +145,10 @@
         bar_spacing: 2,
         orientation: Bottom,
         bar_color: Gradient({
-            0: "#c2a37f",
-            33: "#a68866",
-            66: "#8f7459",
-            100: "#181410"
+            0: "#597885",
+            33: "#cbaa7f",
+            66: "#9f6e53",
+            100: "#141211"
         })
     ),
     border_symbol_sets: {
@@ -166,17 +166,17 @@
     browser_song_format: [
         (
             kind: Group([
-                (kind: Property(Track), style: (fg: "#f5efe5")),
+                (kind: Property(Track), style: (fg: "#b19f8d")),
                 (kind: Text(" ")),
             ])
         ),
         (
             kind: Group([
-                (kind: Property(Artist), style: (fg: "#f5efe5")),
+                (kind: Property(Artist), style: (fg: "#b19f8d")),
                 (kind: Text(" - ")),
-                (kind: Property(Title), style: (fg: "#f5efe5")),
+                (kind: Property(Title), style: (fg: "#b19f8d")),
             ]),
-            default: (kind: Property(Filename), style: (fg: "#f5efe5"))
+            default: (kind: Property(Filename), style: (fg: "#b19f8d"))
         ),
     ],
     layout: Split(

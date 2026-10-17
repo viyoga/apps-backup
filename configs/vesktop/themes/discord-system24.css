@@ -43,29 +43,29 @@ body {
   --colors: on;
 
   /* Text */
-  --text-0: #181410;
-  --text-1: #f5efe5;
-  --text-2: #f5efe5;
-  --text-3: color-mix(in srgb, #f5efe5 70%, #715f4b);
-  --text-4: color-mix(in srgb, #f5efe5 50%, #715f4b);
-  --text-5: color-mix(in srgb, #f5efe5 35%, #715f4b);
+  --text-0: #141211;
+  --text-1: #b19f8d;
+  --text-2: #b19f8d;
+  --text-3: color-mix(in srgb, #b19f8d 70%, #5a6266);
+  --text-4: color-mix(in srgb, #b19f8d 50%, #5a6266);
+  --text-5: color-mix(in srgb, #b19f8d 35%, #5a6266);
 
   /* Backgrounds */
-  --bg-1: #181410;
-  --bg-2: #241e18;
-  --bg-3: #241e18;
-  --bg-4: #181410;
+  --bg-1: #141211;
+  --bg-2: #1c1e1e;
+  --bg-3: #1c1e1e;
+  --bg-4: #141211;
 
-  --hover: #241e18;
-  --active: #241e18;
-  --message-hover: #241e18;
+  --hover: #1c1e1e;
+  --active: #1c1e1e;
+  --message-hover: #1c1e1e;
 
   /* Primary & Accents */
-  --accent-1: #a68866;
+  --accent-1: #cbaa7f;
   --accent-2: var(--accent-1);
-  --accent-3: #c2a37f;
-  --accent-4: #241e18;
-  --accent-5: #8f7459;
+  --accent-3: #597885;
+  --accent-4: #1c1e1e;
+  --accent-5: #9f6e53;
   --accent-6: var(--accent-1);
 
   /* Borders */
@@ -82,11 +82,11 @@ body {
   --pill-active: var(--accent-1);
 
   /* Status */
-  --online: #a68866;
-  --idle: #8f7459;
-  --dnd: #b87a59;
-  --streaming: #c2a37f;
-  --offline: #715f4b;
+  --online: #cbaa7f;
+  --idle: #9f6e53;
+  --dnd: #a64616;
+  --streaming: #597885;
+  --offline: #5a6266;
 }
 
 /* ===================== /
@@ -312,14 +312,14 @@ body {
 
 /* 1. Read channels (Set to requested 90% opacity for clear visibility) */
 [class*="link_"] * {
-  color: color-mix(in srgb, #f5efe5 80%, transparent) !important;
+  color: color-mix(in srgb, #b19f8d 80%, transparent) !important;
   opacity: 0.90 !important;
 }
 
 /* 2. Unread channels */
 [class*="modeUnread_"] [class*="link_"] *,
 [class*="modeUnreadImportant_"] [class*="link_"] * {
-  color: #f5efe5 !important;
+  color: #b19f8d !important;
   opacity: 1 !important;
 }
 [class*="modeUnread_"] [class*="name_"],
@@ -329,23 +329,23 @@ body {
 
 /* 3. Selected channel */
 [class*="modeSelected_"] [class*="link_"] * {
-  color: #f5efe5 !important;
+  color: #b19f8d !important;
   opacity: 1 !important;
 }
 
 /* 4. Muted channels */
 [class*="modeMuted_"] [class*="link_"] * {
-  color: color-mix(in srgb, #f5efe5 45%, transparent) !important;
+  color: color-mix(in srgb, #b19f8d 45%, transparent) !important;
   opacity: 0.55 !important;
 }
 
 /* 5. Direct messages (Set to requested 90% opacity for clear visibility) */
 [class*="privateChannels_"] [class*="channel_"] * {
-  color: color-mix(in srgb, #f5efe5 80%, transparent) !important;
+  color: color-mix(in srgb, #b19f8d 80%, transparent) !important;
   opacity: 0.90 !important;
 }
 [class*="privateChannels_"] [class*="selected_"] * {
-  color: #f5efe5 !important;
+  color: #b19f8d !important;
   opacity: 1 !important;
 }
 
