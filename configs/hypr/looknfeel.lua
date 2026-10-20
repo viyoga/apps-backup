@@ -34,8 +34,8 @@ hl.config({
 	decoration = {
 		rounding = 0,
 		rounding_power = 2,
-		active_opacity = glass_on and 0.86 or 1,
-		inactive_opacity = glass_on and 0.79 or 1,
+		active_opacity = 1,
+		inactive_opacity = 1,
 		shadow = {
 			enabled = false,
 			range = 25,
@@ -46,7 +46,7 @@ hl.config({
 			scale = 1.0,
 		},
 		blur = {
-			enabled = glass_on,
+			enabled = on,
 			size = 7,
 			passes = 3,
 			noise = 0.02,
