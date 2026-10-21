@@ -321,7 +321,7 @@ ytd() {
     local meta_tmp=$(mktemp)
 
     # Fetch video metadata in background with a responsive spinner
-    yt-dlp --force-ipv4 "${cookie_args[@]}" -J "$url" >| "$meta_tmp" 2>/dev/null &
+    yt-dlp --force-ipv4 "${cookie_args[@]}" -f "bestvideo*+bestaudio/best" -J "$url" >| "$meta_tmp" 2>/dev/null &
     local pid=$!
     trap 'kill $pid 2>/dev/null; rm -f "$meta_tmp"; return 1' INT
 
@@ -430,9 +430,51 @@ try:
             elif acaps:
                 chosen_lang = list(acaps.keys())[0]
 
-    print(f'{title}\t{chosen_lang}\t{uploader}\t{pub_rel}')
+    # 3. Resolve the true quality + frame rate of the stream we will download
+    def video_quality(d):
+        def best_video(fmts):
+            best = None
+            for f in fmts or []:
+                if f.get('vcodec') in (None, 'none'):
+                    continue
+                key = (f.get('height') or 0, f.get('fps') or 0, f.get('tbr') or 0)
+                if best is None or key > best[0]:
+                    best = (key, f)
+            return best[1] if best else None
+
+        v = best_video(d.get('requested_formats'))
+        if v is None and d.get('vcodec') not in (None, 'none'):
+            v = d
+        if v is None:
+            v = best_video(d.get('formats'))
+        if v is None or not v.get('height'):
+            return ''
+
+        h = int(v.get('height'))
+        w = v.get('width')
+        if h >= 2160:
+            label = '4K'
+        elif h >= 1440:
+            label = '1440p'
+        elif h >= 1080:
+            label = '1080p'
+        elif h >= 720:
+            label = '720p'
+        elif h >= 480:
+            label = '480p'
+        else:
+            label = f'{h}p'
+
+        res = f'{int(w)}x{h}' if w else f'{h}p'
+        fps = v.get('fps')
+        fps_txt = f' @ {int(round(float(fps)))}fps' if fps else ''
+        return f'{label} ({res}){fps_txt}'
+
+    quality = video_quality(data)
+
+    print(f'{title}\t{chosen_lang}\t{uploader}\t{pub_rel}\t{quality}')
 except Exception:
-    print('\t\t\t')
+    print('\t\t\t\t')
 " "$meta_tmp" 2>/dev/null)
     rm -f "$meta_tmp"
 
@@ -440,7 +482,8 @@ except Exception:
     local chosen_lang=""
     local video_uploader=""
     local video_published=""
-    IFS=$'\t' read -r video_title chosen_lang video_uploader video_published <<< "$meta_info"
+    local video_quality=""
+    IFS=$'\t' read -r video_title chosen_lang video_uploader video_published video_quality <<< "$meta_info"
 
     if [[ -n "$video_title" ]]; then
         echo -e "\033[1;32m✔ Video:\033[0m    \033[1;37m$video_title\033[0m"
@@ -451,6 +494,9 @@ except Exception:
         echo -e "\033[1;32m✔ Channel:\033[0m  $chan_line"
     elif [[ -n "$video_published" ]]; then
         echo -e "\033[1;32m✔ Channel:\033[0m  \033[1;35m$video_published\033[0m"
+    fi
+    if [[ -n "$video_quality" ]]; then
+        echo -e "\033[1;32m✔ Quality:\033[0m  \033[1;37m$video_quality\033[0m"
     fi
     if [[ -n "$chosen_lang" ]]; then
         echo -e "\033[1;32m✔ Subtitles:\033[0m \033[33m$chosen_lang\033[0m"
