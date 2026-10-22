@@ -26,6 +26,75 @@ _lutgen_resolve_target() {
     fi
 }
 
+# Keep ~/.config/lutgen/*.txt in sync with the Noctalia palettes.
+# Every JSON in ~/.config/noctalia/palettes is converted into a lutgen palette:
+# the sorted, deduplicated hex colors of its "dark" section. A single python
+# pass, and each .txt is only rewritten when its source JSON is newer, so this
+# is cheap to call on every interactive run.
+_lutgen_sync_palettes() {
+    local noctalia_dir="${XDG_CONFIG_HOME:-$HOME/.config}/noctalia/palettes"
+    local lutgen_dir="${XDG_CONFIG_HOME:-$HOME/.config}/lutgen"
+
+    [[ -d "$noctalia_dir" ]] || return 0
+    command -v python3 >/dev/null 2>&1 || return 0
+    mkdir -p "$lutgen_dir" 2>/dev/null || return 0
+
+    python3 - "$noctalia_dir" "$lutgen_dir" <<'PY' 2>/dev/null
+import json, os, re, sys
+
+src_dir, dst_dir = sys.argv[1], sys.argv[2]
+hex_re = re.compile(r'#[0-9a-fA-F]{6}(?:[0-9a-fA-F]{2})?$')
+
+for fn in sorted(os.listdir(src_dir)):
+    if not fn.endswith('.json'):
+        continue
+    src = os.path.join(src_dir, fn)
+    dst = os.path.join(dst_dir, os.path.splitext(fn)[0] + '.txt')
+    try:
+        if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
+            continue
+        with open(src, encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception:
+        continue
+
+    root = data.get('dark', data)
+    colors = set()
+
+    def walk(node):
+        if isinstance(node, dict):
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, str):
+            color = node.strip()
+            if hex_re.fullmatch(color):
+                colors.add(color.lower())
+
+    walk(root)
+    if not colors:
+        continue
+
+    tmp = dst + '.tmp'
+    try:
+        with open(tmp, 'w', encoding='utf-8') as f:
+            f.write(''.join(c + '\n' for c in sorted(colors)))
+        os.replace(tmp, dst)
+    except OSError:
+        pass
+PY
+}
+
+# Manual trigger, e.g. after dropping a palette into ~/.config/noctalia/palettes
+lutgen-sync-palettes() {
+    _lutgen_sync_palettes
+    local dir="${XDG_CONFIG_HOME:-$HOME/.config}/lutgen" f
+    local -a names=()
+    for f in "$dir"/*.txt(N); do
+        names+=("${f:t:r}")
+    done
+    print -r -- "${#names} lutgen palette(s) available in $dir"
+}
+
 lutgen() {
     # 1. Passthrough for built-in subcommands and flags (-V, --help, apply, etc.)
     if [[ $# -gt 0 ]]; then
@@ -45,6 +114,9 @@ lutgen() {
         echo -e "\033[1;31m✘ Palettes directory not found:\033[0m $palettes_dir"
         return 1
     fi
+
+    # Pick up palettes added/changed in ~/.config/noctalia/palettes
+    _lutgen_sync_palettes
 
     # 2. Collect input files if arguments were passed
     local -a input_files=()
