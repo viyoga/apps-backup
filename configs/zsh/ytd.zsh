@@ -505,7 +505,7 @@ except Exception:
     fi
     echo
 
-    # Download: animated horizontal progress bar
+    # Download: chomp progress bar  [----C o o o o o]  11%
     local sub_opts=()
     if [[ -n "$chosen_lang" ]]; then
         sub_opts=(
@@ -515,14 +515,11 @@ except Exception:
         )
     fi
 
-    # Progress bar style: "pacman" (󰮯•••󰊠) or "modern" (▕████░░░░▏)
-    local bar_style="${YTD_BAR_STYLE:-pacman}"
-
     local dl_err_log=$(mktemp)
 
     yt-dlp --force-ipv4 "${cookie_args[@]}" \
         --no-warnings --quiet --progress --newline \
-        --progress-template "download:PROG:%(progress._percent)s|%(progress._downloaded_bytes_str)s|%(progress._total_bytes_str)s|%(progress._speed_str)s|%(progress._elapsed_str)s" \
+        --progress-template "download:PROG:%(progress._percent_str)s|%(progress.downloaded_bytes)s|%(progress.speed)s|%(progress._eta_str)s" \
         "${sub_opts[@]}" \
         --ignore-errors \
         -f "bestvideo*+bestaudio/best" \
@@ -531,70 +528,70 @@ except Exception:
         -P "$dest_dir" "$url" 2>| "$dl_err_log" | python3 -c '
 import sys
 
-style = "'"$bar_style"'"
-W     = 30   # inner chars inside [ ]
+W = 34          # cells between the brackets
 
-def draw_bar(pct_raw, downloaded, total, speed, elapsed):
+UNITS = ("B", "KiB", "MiB", "GiB", "TiB", "PiB")
+
+
+def human(raw, suffix=""):
+    """3 significant digits + space + unit, like 16.2 MiB / 700 KiB/s."""
+    try:
+        v = float(str(raw).strip())
+    except (TypeError, ValueError):
+        return "--"
+    if v != v or v < 0:
+        return "--"
+    i = 0
+    while v >= 1024 and i < len(UNITS) - 1:
+        v /= 1024.0
+        i += 1
+    return "%.3g %s%s" % (v, UNITS[i], suffix)
+
+
+def draw_bar(pct_raw, dl, spd, eta):
     try:
         pct = float(str(pct_raw).replace("%", "").strip())
-    except:
+    except Exception:
         return
     pct = max(0.0, min(100.0, pct))
 
-    dl  = downloaded.strip()
-    tot = total.strip()
-    spd = speed.strip()
-    ela = elapsed.strip()
-
-    size_field = f"{dl}/{tot}" if tot and tot not in ("NA","N/A","~unknown~") else dl
-    spd_field  = spd if spd not in ("NA","N/A","~unknown~","") else ""
-    ela_field  = ela if ela not in ("NA","N/A","~unknown~","") else "--:--"
-
-    # ── [━━━━━━━━━━━ᗧ • • • • • • • • •]  45% ─────────────────────────
-    avail = W - 1                              # 1 char reserved for Pacman head ᗧ
-    trail_n = int(avail * pct / 100)
-    rem = avail - trail_n
+    dl_t = human(dl)
+    spd_t = human(spd, "/s") if spd.strip() not in ("NA", "N/A", "None", "") else "--"
+    eta = eta.strip()
+    if eta in ("NA", "N/A", "None", "~unknown~", "-", ""):
+        eta = "--:--"
 
     if pct >= 100.0:
-        icon = "\033[1;32m✔\033[0m"
-        trail_str = "\033[1;32m" + ("━" * (W - 1)) + "\033[0m"
-        head_str = "\033[1;32mᗧ\033[0m"
-        dots_str = ""
-        pct_color = "\033[1;32m"
+        inner = "\033[1;32m" + ("-" * W) + "\033[0m"
+        pct_c = "\033[1;32m"
     else:
-        icon = "\033[36m󰔛\033[0m"
-        trail_str = "\033[33m" + ("━" * trail_n) + "\033[0m"
-        head_str = "\033[1;33mᗧ\033[0m"
-        dots_pattern = (" •" * ((rem + 1) // 2))[:rem]
-        dots_str = "\033[90m" + dots_pattern + "\033[0m"
-        pct_color = "\033[1;33m"
+        avail = W - 1
+        fill_n = int(avail * pct / 100.0)
+        rem = avail - fill_n
+        head = "C" if int(pct) % 2 == 0 else "c"
+        trail = ("\033[37m" + ("-" * fill_n) + "\033[0m") if fill_n else ""
+        dots = ("\033[90m" + (("o " * ((rem + 1) // 2))[:rem]) + "\033[0m") if rem else ""
+        inner = trail + "\033[1;97m" + head + "\033[0m" + dots
+        pct_c = "\033[1;97m"
 
-    bar = f"\033[90m[\033[0m{trail_str}{head_str}{dots_str}\033[90m]\033[0m"
-    pct_str = f"{pct_color}{pct:>3.0f}%\033[0m"
+    size_f = "\033[33m" + format(dl_t, ">9") + "\033[0m"
+    spd_f = "\033[36m" + format(spd_t, ">10") + "\033[0m"
+    eta_f = "\033[90m" + format(eta, ">7") + "\033[0m"
 
-    # Colorized metadata fields matching Noctalia theme:
-    # Size in warm amber/yellow (\033[33m), speed in cyan/teal (\033[36m), elapsed in muted gray (\033[90m)
-    size_str = f"\033[33m{size_field:<21}\033[0m"
-    spd_str  = f"\033[36m{spd_field:<12}\033[0m"
-    ela_str  = f"\033[90m{ela_field:<8}\033[0m"
-
-    line = (
-        f"\r\033[K"
-        f"{icon} {size_str}  {spd_str}  {ela_str}  "
-        f"{bar}  {pct_str}"
-    )
+    line = ("\r\033[K" + size_f + "  " + spd_f + "  " + eta_f + "  "
+            + "\033[90m[\033[0m" + inner + "\033[90m]\033[0m "
+            + pct_c + format(pct, ">3.0f") + "%\033[0m")
 
     sys.stdout.write(line)
     sys.stdout.flush()
+
 
 try:
     for line in sys.stdin:
         if line.startswith("PROG:"):
             parts = line[5:].strip().split("|")
-            if len(parts) >= 5:
-                draw_bar(parts[0], parts[1], parts[2], parts[3], parts[4])
-            elif len(parts) >= 4:
-                draw_bar(parts[0], parts[1], parts[2], parts[3], "")
+            if len(parts) >= 4:
+                draw_bar(parts[0], parts[1], parts[2], parts[3])
     print()
 except (KeyboardInterrupt, BrokenPipeError):
     pass

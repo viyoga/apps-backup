@@ -53,6 +53,8 @@ hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.config/hypr/scripts/screen-rec.s
 hl.bind(mainMod .. " + SHIFT + F1", hl.dsp.exec_cmd("~/.config/hypr/scripts/screen-rec.sh without"))
 hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("~/.config/hypr/scripts/layout-toggle.sh"))
 hl.bind(mainMod .. " + SHIFT + semicolon", hl.dsp.exec_cmd("~/.config/hypr/scripts/anim-toggle.sh"))
+-- Glass on/off: opacity 0.78/0.8 + blur <-> opacity 1.0 / no blur (GTK4 apps follow)
+hl.bind("ALT + semicolon", hl.dsp.exec_cmd("~/.config/hypr/scripts/glass-toggle.sh"))
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("noctalia msg panel-toggle hiraeth/noctavibes:panel"))
 hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("noctalia msg panel-toggle samuelskovbakke/calculator-plus:panel"))
 hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd("noctalia msg panel-toggle rylos/syncthing:panel"))

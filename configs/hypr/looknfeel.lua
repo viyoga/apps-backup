@@ -1,10 +1,19 @@
 require("colors")
 
--- Blur/glass permanently disabled by user request (2026-10-14): no
--- translucency anywhere. The toggle script and its Alt+; bind were removed;
--- decoration blur and the window opacities below are pinned off so a Noctalia
--- re-eval of this file cannot re-enable them.
-local glass_on = false
+-- Glass persistence: Hyprland re-evaluates this file whenever Noctalia rewrites
+-- noctalia.lua (wallpaper/theme change), which would stomp runtime-only
+-- opacities and flip everything back to glass. Reading the persisted toggle
+-- state here makes every re-eval converge to the mode chosen with Alt+;
+-- (scripts/glass-toggle.sh writes ~/.cache/hypr-glass-mode: "on" or "off").
+local glass_on = (function()
+	local f = io.open(os.getenv("HOME") .. "/.cache/hypr-glass-mode", "r")
+	if not f then
+		return false
+	end
+	local v = f:read("*l") or ""
+	f:close()
+	return v == "on"
+end)()
 
 hl.config({
 	animations = {
@@ -34,8 +43,8 @@ hl.config({
 	decoration = {
 		rounding = 0,
 		rounding_power = 2,
-		active_opacity = 0.78,
-		inactive_opacity = 0.8,
+		active_opacity = glass_on and 0.78 or 1.0,
+		inactive_opacity = glass_on and 0.8 or 1.0,
 		shadow = {
 			enabled = false,
 			range = 25,
@@ -46,7 +55,7 @@ hl.config({
 			scale = 1.0,
 		},
 		blur = {
-			enabled = on,
+			enabled = glass_on,
 			size = 5,
 			passes = 2,
 			noise = 0.02,

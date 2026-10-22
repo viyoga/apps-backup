@@ -4,45 +4,45 @@
 * stylelint-disable at-rule-no-unknown
 */
 
-@define-color accent_color #abd371;
-@define-color accent_bg_color #abd371;
-@define-color accent_fg_color #213600;
+@define-color accent_color #d4ab7b;
+@define-color accent_bg_color #d4ab7b;
+@define-color accent_fg_color #121110;
 
-@define-color destructive_bg_color #ffb4ab;
-@define-color destructive_fg_color #690005;
+@define-color destructive_bg_color #c97a63;
+@define-color destructive_fg_color #121110;
 
-@define-color error_bg_color #ffb4ab;
-@define-color error_fg_color #690005;
+@define-color error_bg_color #c97a63;
+@define-color error_fg_color #121110;
 
-@define-color window_bg_color #12140e;
-@define-color window_fg_color #e2e3d8;
+@define-color window_bg_color #121110;
+@define-color window_fg_color #e2d1c1;
 
-@define-color view_bg_color #12140e;
-@define-color view_fg_color #e2e3d8;
+@define-color view_bg_color #121110;
+@define-color view_fg_color #e2d1c1;
 
-@define-color headerbar_bg_color #12140e;
-@define-color headerbar_fg_color #e2e3d8;
+@define-color headerbar_bg_color #121110;
+@define-color headerbar_fg_color #e2d1c1;
 @define-color headerbar_backdrop_color @window_bg_color;
 
-@define-color popover_bg_color #1e2019;
-@define-color popover_fg_color #e2e3d8;
+@define-color popover_bg_color #1a1816;
+@define-color popover_fg_color #e2d1c1;
 
-@define-color card_bg_color #1e2019;
-@define-color card_fg_color #e2e3d8;
+@define-color card_bg_color #1a1816;
+@define-color card_fg_color #e2d1c1;
 
-@define-color dialog_bg_color #12140e;
-@define-color dialog_fg_color #e2e3d8;
+@define-color dialog_bg_color #121110;
+@define-color dialog_fg_color #e2d1c1;
 
-@define-color overview_bg_color #1e2019;
-@define-color overview_fg_color #e2e3d8;
+@define-color overview_bg_color #1a1816;
+@define-color overview_fg_color #e2d1c1;
 
-@define-color sidebar_bg_color #12140e;
-@define-color sidebar_fg_color #e2e3d8;
+@define-color sidebar_bg_color #121110;
+@define-color sidebar_fg_color #e2d1c1;
 @define-color sidebar_backdrop_color @window_bg_color;
 @define-color sidebar_border_color @window_bg_color;
 
-@define-color secondary_sidebar_bg_color #12140e;
-@define-color secondary_sidebar_fg_color #e2e3d8;
+@define-color secondary_sidebar_bg_color #121110;
+@define-color secondary_sidebar_fg_color #e2d1c1;
 
 /* Backdrop/unfocused states */
 @define-color theme_unfocused_fg_color @window_fg_color;
@@ -53,51 +53,51 @@
 @define-color theme_unfocused_selected_fg_color @accent_fg_color;
 
 :root {
-    --accent-color: #abd371;
-    --accent-bg-color: #abd371;
-    --accent-fg-color: #213600;
+    --accent-color: #d4ab7b;
+    --accent-bg-color: #d4ab7b;
+    --accent-fg-color: #121110;
 
-    --destructive-bg-color: #ffb4ab;
-    --destructive-fg-color: #690005;
+    --destructive-bg-color: #c97a63;
+    --destructive-fg-color: #121110;
 
-    --error-bg-color: #ffb4ab;
-    --error-fg-color: #690005;
-    --error-color: #ffb4ab;
+    --error-bg-color: #c97a63;
+    --error-fg-color: #121110;
+    --error-color: #c97a63;
 
-    --window-bg-color: #12140e;
-    --window-fg-color: #e2e3d8;
+    --window-bg-color: #121110;
+    --window-fg-color: #e2d1c1;
 
-    --view-bg-color: #12140e;
-    --view-fg-color: #e2e3d8;
+    --view-bg-color: #121110;
+    --view-fg-color: #e2d1c1;
 
-    --headerbar-bg-color: #12140e;
-    --headerbar-fg-color: #e2e3d8;
+    --headerbar-bg-color: #121110;
+    --headerbar-fg-color: #e2d1c1;
     --headerbar-backdrop-color: @window_bg_color;
 
-    --popover-bg-color: #1e2019;
-    --popover-fg-color: #e2e3d8;
+    --popover-bg-color: #1a1816;
+    --popover-fg-color: #e2d1c1;
 
-    --card-bg-color: #1e2019;
-    --card-fg-color: #e2e3d8;
+    --card-bg-color: #1a1816;
+    --card-fg-color: #e2d1c1;
 
-    --dialog-bg-color: #12140e;
-    --dialog-fg-color: #e2e3d8;
+    --dialog-bg-color: #121110;
+    --dialog-fg-color: #e2d1c1;
 
-    --overview-bg-color: #1e2019;
-    --overview-fg-color: #e2e3d8;
+    --overview-bg-color: #1a1816;
+    --overview-fg-color: #e2d1c1;
 
-    --sidebar-bg-color: #12140e;
-    --sidebar-fg-color: #e2e3d8;
+    --sidebar-bg-color: #121110;
+    --sidebar-fg-color: #e2d1c1;
     --sidebar-backdrop-color: @window_bg_color;
     --sidebar-border-color: @window_bg_color;
 
-    --warning-bg-color: #40b287;
-    --warning-fg-color: #003f2b;
-    --warning-color: #6cdbad;
+    --warning-bg-color: #9a5037;
+    --warning-fg-color: #efe1dc;
+    --warning-color: #d9b6aa;
 
-    --success-color: #bbcd9e;
-    --success-bg-color: #3f4e2a;
-    --success-fg-color: #adbf91;
+    --success-color: #d99b78;
+    --success-bg-color: #81411e;
+    --success-fg-color: #f4e2d7;
 
     --shade-color: rgba(0, 0, 0, 0.36);
 }
@@ -108,19 +108,19 @@
 */
 
 toast {
-  background-color: #1a1c16;
+  background-color: #161413;
   border-radius: 12px;
   margin: 6px 6px 32px 80px;
   padding: 6px;
 }
 toast label.heading {
-  color: #e2e3d8;
+  color: #e2d1c1;
 }
 toast button {
-  color: #abd371;
+  color: #d4ab7b;
 }
 toast button.circular.flat {
-  color: #e2e3d8;
+  color: #e2d1c1;
 }
 
 /* Sharp Corners — universal selector (proven approach from backup, was various: 9px/5px/15px → 0) */
@@ -149,8 +149,13 @@ toast button.circular.flat {
   opacity: 0;
 }
 
-/* Fully opaque by design: no translucency, no backdrop blur. Restore the
- * blurred look by deleting this block plus the nautilus-opacity windowrule. */
+/* GTK4 backdrop blur. GTK 4.22+ only asks the compositor to blur when a CSS
+ * backdrop-filter is present, and only when its radius is >= 20px
+ * (BACKGROUND_BLUR_THRESHOLD in gsk/gskblurutils.c). The radius is not the
+ * blur strength — Hyprland's decoration.blur (size 5, passes 2) does the
+ * actual blurring, and the window's transparency still comes from Hyprland's
+ * active/inactive opacity, so the shade stays uniform across the whole window. */
 window {
     background-color: @window_bg_color;
+    backdrop-filter: blur(20px);
 }
