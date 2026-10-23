@@ -1,55 +1,30 @@
 #!/usr/bin/env bash
-# glass-toggle.sh — Alt+; toggle between the glass look and fully opaque.
+# glass-toggle.sh — Alt+; toggles window translucency + blur.
 #
-# Toggles BOTH layers at once:
-#   1. Hyprland  — decoration opacity 0.78/0.8 + blur (size 5, 2 passes)
-#                  <-> opacity 1.0 / no blur. This covers every window,
-#                  including GTK4 apps: their transparency comes from these
-#                  values and their CSS only declares the blur region
-#                  (backdrop-filter >= 20px in noctalia/templates/gtk4.css),
-#                  so no gtk.css edit or app restart is needed.
-#   2. Noctalia  — bar.main.background_opacity 0.77 + shell.panel
-#                  transparency_mode "glass"  <->  1.0 + "solid".
-#                  Noctalia has no IPC for this, so settings.toml is edited
-#                  in place and reloaded with `noctalia msg config-reload`
-#                  (verified: bar re-renders live). settings.toml wins over
-#                  config.toml, so that is the file to change.
+# HYPRLAND ONLY, on purpose. This script must never talk to Noctalia:
+# `noctalia msg config-reload` makes Noctalia re-serialise its state from a
+# half-loaded model and truncates ~/.local/state/noctalia/settings.toml from
+# ~541 lines to a ~40-line stub holding only [lockscreen_widgets], which wipes
+# the bar layout, dock, wallpaper, palette and plugin settings. Verified on
+# noctalia-git r5828 and r5881 on 2026-10-22, with no edits involved.
 #
-# Values mirror ~/.config/hypr/looknfeel.lua and the current Noctalia GUI
-# settings (2026-10-21). Runtime only: `hyprctl reload` restores looknfeel.lua.
+# Consequence: only windows toggle. The bar/panels keep their own opacity.
 set -euo pipefail
 
-NOCTALIA_SETTINGS="${XDG_STATE_HOME:-$HOME/.local/state}/noctalia/settings.toml"
-GLASS_MODE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/hypr-glass-mode"
+MODE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/hypr-glass-mode"
 
-set_noctalia() { # $1 = glass | solid
-    [ -f "$NOCTALIA_SETTINGS" ] || return 0
-    python3 - "$NOCTALIA_SETTINGS" "$1" <<'PY'
-import re, sys
+blur_state="$(hyprctl getoption decoration:blur:enabled | awk -F': ' '/^bool:/{print $2}')"
 
-path, mode = sys.argv[1], sys.argv[2]
-panel_mode = "glass" if mode == "glass" else "solid"
-bar_opacity = "0.77" if mode == "glass" else "1.0"
-
-lines = open(path).read().splitlines(True)
-section = None
-for i, line in enumerate(lines):
-    stripped = line.strip()
-    if stripped.startswith("["):
-        section = stripped
-        continue
-    indent = line[: len(line) - len(line.lstrip())]
-    if section == "[shell.panel]" and re.match(r"transparency_mode\s*=", stripped):
-        lines[i] = f'{indent}transparency_mode = "{panel_mode}"\n'
-    elif section == "[bar.main]" and re.match(r"background_opacity\s*=", stripped):
-        lines[i] = f'{indent}background_opacity = {bar_opacity}\n'
-
-open(path, "w").writelines(lines)
-PY
-    noctalia msg config-reload >/dev/null 2>&1 || true
-}
-
-hypr_glass_on() {
+if [ "$blur_state" = "true" ]; then
+    printf 'off\n' >"$MODE_FILE"
+    hyprctl eval 'hl.config({ decoration = {
+        active_opacity = 1.0,
+        inactive_opacity = 1.0,
+        blur = { enabled = false },
+    } })' >/dev/null
+    notify-send -a hypr -t 1200 "glass off" "windows opaque" 2>/dev/null || true
+else
+    printf 'on\n' >"$MODE_FILE"
     hyprctl eval 'hl.config({ decoration = {
         active_opacity = 0.78,
         inactive_opacity = 0.8,
@@ -57,26 +32,5 @@ hypr_glass_on() {
                  contrast = 1.1, brightness = 0.9, ignore_opacity = true,
                  new_optimizations = true, xray = false },
     } })' >/dev/null
-}
-
-hypr_glass_off() {
-    hyprctl eval 'hl.config({ decoration = {
-        active_opacity = 1.0,
-        inactive_opacity = 1.0,
-        blur = { enabled = false },
-    } })' >/dev/null
-}
-
-blur_state="$(hyprctl getoption decoration:blur:enabled | awk -F': ' '/^bool:/{print $2}')"
-
-if [ "$blur_state" = "true" ]; then
-    printf 'off\n' >"$GLASS_MODE_FILE"
-    hypr_glass_off
-    set_noctalia solid
-    noctalia msg notification-show "glass off" "opaque" >/dev/null 2>&1 || true
-else
-    printf 'on\n' >"$GLASS_MODE_FILE"
-    hypr_glass_on
-    set_noctalia glass
-    noctalia msg notification-show "glass on" "translucent" >/dev/null 2>&1 || true
+    notify-send -a hypr -t 1200 "glass on" "windows translucent" 2>/dev/null || true
 fi

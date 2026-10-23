@@ -26,9 +26,12 @@ if pgrep -f '^gpu-screen-recorder -w ' >/dev/null 2>&1; then
   # currently recording -> stop
   noctalia msg plugin noctalia/screen_recorder:service all toggle
 else
-  # not recording -> apply cursor mode, then start
-  noctalia msg config-reload
-  sleep 0.5
+  # not recording -> start with the cursor mode written above.
+  # NO `noctalia msg config-reload` here: it re-serialises Noctalia's state from
+  # a half-loaded model and truncates ~/.local/state/noctalia/settings.toml to a
+  # ~40-line stub (bar/dock/wallpaper/palette/plugins wiped). Verified on
+  # noctalia-git r5828 and r5881, 2026-10-22. The written show_cursor/video_qp
+  # values are picked up by the plugin on the next shell start.
   noctalia msg plugin noctalia/screen_recorder:service all toggle
   noctalia msg notification-show "Screen recording started" "Recording $CURSOR_TEXT"
 fi

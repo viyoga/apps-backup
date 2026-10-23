@@ -45,3 +45,7 @@ hl.workspace_rule({ workspace = "10", monitor = "HDMI-A-1", default_name = "十"
 
 
 
+
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()
