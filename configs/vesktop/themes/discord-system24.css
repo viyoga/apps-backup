@@ -2,11 +2,12 @@
 * @name Noctalia System24
 * @description A fork of 'System24' for Noctalia Shell
 * @author Ezequielgk
-* @version 2.0.0
+* @version 2.0.1
 */
 
 @import url('https://refact0r.github.io/system24/build/system24.css');
 
+/* --- BASE VARIABLES --- */
 body {
   --font: '';
   --code-font: '';
@@ -39,41 +40,45 @@ body {
   --dms-background-color: linear-gradient(70deg, var(--blue-2), var(--purple-2), var(--red-2));
 }
 
+/* --- ROOT COLORS & BORDERS --- */
 :root {
   --colors: on;
 
-  /* Text */
-  --text-0: #1c1e1a;
-  --text-1: #f4f6eb;
-  --text-2: #f4f6eb;
-  --text-3: color-mix(in srgb, #f4f6eb 70%, #666961);
-  --text-4: color-mix(in srgb, #f4f6eb 50%, #666961);
-  --text-5: color-mix(in srgb, #f4f6eb 35%, #666961);
+  --radius-xs: 0px !important;
+  --radius-sm: 0px !important;
+  --radius-md: 0px !important;
+  --radius-lg: 0px !important;
+  --radius-xl: 0px !important;
+  --radius-xxl: 0px !important;
+  --radius-round: 0px !important;
 
-  /* Backgrounds */
-  --bg-1: #1c1e1a;
-  --bg-2: #252722;
-  --bg-3: #252722;
-  --bg-4: #1c1e1a;
+  --text-0: #1f1819;
+  --text-1: #f5ece8;
+  --text-2: color-mix(in srgb, #f5ece8 90%, transparent);
+  --text-3: color-mix(in srgb, #f5ece8 75%, transparent);
+  --text-4: color-mix(in srgb, #f5ece8 60%, transparent);
+  --text-5: color-mix(in srgb, #f5ece8 45%, transparent);
 
-  --hover: #252722;
-  --active: #252722;
-  --message-hover: #252722;
+  --bg-1: #1f1819;
+  --bg-2: #291f20;
+  --bg-3: #291f20;
+  --bg-4: #1f1819;
 
-  /* Primary & Accents */
-  --accent-1: #a2b08d;
+  --hover: #291f20;
+  --active: #291f20;
+  --message-hover: #291f20;
+
+  --accent-1: #ff382e;
   --accent-2: var(--accent-1);
-  --accent-3: #948e74;
-  --accent-4: #252722;
-  --accent-5: #6e857b;
+  --accent-3: #e0875a;
+  --accent-4: #291f20;
+  --accent-5: #f59e0b;
   --accent-6: var(--accent-1);
 
-  /* Borders */
   --border-light: color-mix(in srgb, var(--accent-1) 10%, transparent);
   --border: color-mix(in srgb, var(--accent-1) 18%, transparent);
   --border-active: color-mix(in srgb, var(--accent-1) 60%, transparent);
 
-  /* Muted & Internals */
   --accent-muted: color-mix(in srgb, var(--accent-1) 15%, transparent);
   --list-inactive: var(--accent-muted);
   --icon-muted: var(--accent-muted);
@@ -81,17 +86,19 @@ body {
   --list-active: var(--accent-1);
   --pill-active: var(--accent-1);
 
-  /* Status */
-  --online: #a2b08d;
-  --idle: #6e857b;
-  --dnd: #ce7a71;
-  --streaming: #948e74;
-  --offline: #666961;
+  --online: #ff382e;
+  --idle: #f59e0b;
+  --dnd: #ff2d6f;
+  --streaming: #e0875a;
+  --offline: #795f60;
 }
 
-/* ===================== /
-/ SELECTIONS            /
-/ ===================== */
+/* --- GLOBAL RESET --- */
+*, *::before, *::after {
+  border-radius: 0px !important;
+}
+
+/* --- SELECTIONS & HIGHLIGHTS --- */
 .modeSelected-3DmyhH .content-1gYQeQ,
 .selected-1-Z6gm {
   background: color-mix(in srgb, var(--accent-1) 16%, transparent) !important;
@@ -101,24 +108,16 @@ body {
   background: var(--accent-muted) !important;
 }
 
-/* ===================== /
-/ ACTIVITY / FRIENDS    /
-/ ===================== */
 .activityItem-1Z9CTr,
 .friendSelected-3cwmD7 {
   background: color-mix(in srgb, var(--accent-1) 18%, transparent) !important;
 }
 
-/* ===================== /
-/ HEADER BORDER         /
-/ ===================== */
+/* --- GENERAL UI ELEMENTS --- */
 .title-31SJ6t {
   border-bottom: 1px solid var(--border-light) !important;
 }
 
-/* ===================== /
-/ HOME ICON             /
-/ ===================== */
 .tutorialContainer-1pL9QS svg {
   color: var(--icon-muted) !important;
 }
@@ -127,107 +126,91 @@ body {
   color: var(--accent-1) !important;
 }
 
-/* ===================== /
-/ INTERFACE OVERRIDES   /
-/ ===================== */
-
-/* Dividers */
 [class*="divider"]:not([class*="isUnread"]) {
   border-color: var(--bg-2) !important;
 }
 
-/* Profile Banners */
 [class*="bannerButton"], 
 [class*="bannerColor"] {
   color: var(--text-1) !important;
 }
 
-/* Prevent scaling animation on Home/DMS icon */
 [class*="guildsnav"] [class*="wrapper"][data-list-item-id='guildsnav___home']:hover > [class*="childWrapper"]::before,
 [class*="guildsnav"] [class*="wrapper"][data-list-item-id='guildsnav___home'][class*="selected"] > [class*="childWrapper"]::before {
   transform: rotate(-360deg) scale(1) !important;
 }
 
-/* Timestamps */
+/* --- TEXT & TYPOGRAPHY --- */
 [class*="timestamp"],
 [class*="timestampInline"],
-[class*="timestamp"] time {
-  color: var(--text-4) !important;
-}
-
-/* Forum/Thread Titles */
-[class*="postTitleText"],
-[class*="postTitleText"] [class*="highlight"] {
-  color: var(--text-2) !important;
-}
-
-/* Message Content */
-[class*="messageContent"] {
-  color: var(--text-3) !important;
-}
-[class*="messageContent"] [class*="highlight"] {
-  color: var(--text-2) !important;
-}
-
-/* Slowmode Text */
+[class*="timestamp"] time,
 [class*="cooldownText"] {
   color: var(--text-4) !important;
 }
 
-/* Checkboxes */
-[class*="checkboxIndicator"] {
-  background-color: transparent !important;
-  border-color: var(--text-4) !important;
-  transition: border-color 0.2s ease;
-}
-[class*="checkboxOption"]:hover [class*="checkboxIndicator"] {
-  background-color: color-mix(in srgb, var(--accent-1) 20%, transparent) !important;
-  border-color: var(--accent-1) !important;
-}
-[class*="checkboxOption"][data-selected="true"] [class*="checkboxIndicator"],
-[class*="checkboxOption"][data-selected] [class*="checkboxIndicator"] {
-  background-color: transparent !important;
-  border-color: var(--accent-1) !important;
-}
-[class*="checkboxOption"][data-selected="true"] [class*="checkStroke"],
-[class*="checkboxOption"][data-selected="true"] [class*="dot"] {
-  color: var(--accent-3) !important;
+[class*="postTitleText"],
+[class*="postTitleText"] [class*="highlight"],
+[class*="messageContent"] [class*="highlight"] {
+  color: var(--text-2) !important;
 }
 
-/* Slate Nodes */
+[class*="messageContent"],
 [data-slate-node="element"],
 [data-slate-node="text"],
 [data-slate-string="true"] {
   color: var(--text-3) !important;
 }
 
-/* Badges */
-[class*="eyebrow"][class*="badge"][class*="expressive"] {
-  color: var(--accent-1) !important;
-  background-color: color-mix(in srgb, var(--accent-1) 15%, transparent) !important;
+.channelMention:hover {
+  color: var(--text-1) !important;
 }
 
-/* Radios */
+/* --- INTERACTIVE CONTROLS --- */
+[class*="checkboxIndicator"] {
+  background-color: transparent !important;
+  border-color: var(--text-4) !important;
+  transition: border-color 0.2s ease;
+}
+
+[class*="checkboxOption"]:hover [class*="checkboxIndicator"] {
+  background-color: color-mix(in srgb, var(--accent-1) 20%, transparent) !important;
+  border-color: var(--accent-1) !important;
+}
+
+[class*="checkboxOption"][data-selected="true"] [class*="checkboxIndicator"],
+[class*="checkboxOption"][data-selected] [class*="checkboxIndicator"] {
+  background-color: transparent !important;
+  border-color: var(--accent-1) !important;
+}
+
+[class*="checkboxOption"][data-selected="true"] [class*="checkStroke"],
+[class*="checkboxOption"][data-selected="true"] [class*="dot"] {
+  color: var(--accent-3) !important;
+}
+
 [class*="outerRadioBase"] {
   fill: var(--bg-1) !important;
   stroke: var(--border) !important;
   stroke-width: 1px;
   transition: stroke 0.2s ease;
 }
+
 [class*="outerRadioBase"]:hover {
   stroke: var(--accent-1) !important;
 }
-[class*="outerRadioFill"] {
+
+[class*="outerRadioFill"],
+[class*="innerDotRadio"] {
   fill: var(--bg-1) !important;
   stroke: var(--border) !important;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
+
 [class*="innerDotRadio"] {
   fill: var(--accent-3) !important;
-  opacity: 0;
-  transition: opacity 0.2s ease;
 }
+
 [class*="radioSelection"][data-selected="true"] [class*="outerRadioFill"],
 [class*="radioSelection"][data-selected="true"] [class*="innerDotRadio"],
 [class*="radioSelection"][aria-checked="true"] [class*="outerRadioFill"],
@@ -237,116 +220,155 @@ body {
   opacity: 1 !important;
 }
 
-/* Channel Mentions */
-.channelMention:hover {
-  color: var(--text-1) !important;
+[class*="pollContainer_"] [class*="selected__"] [class*="radioForeground_"] {
+  fill: var(--accent-3) !important;
 }
 
-/* Unread Indicators & Bars */
+[class*="pollContainer_"] [class*="selected__"],
+[class*="pollContainer_"] [class*="votedStyles_"] [class*="answerInner_"] {
+  border: 2px solid var(--active) !important;
+}
+
+[class*="votedStyles_"] [class*="votePercentageBar_"] {
+  background-color: var(--active-2) !important;
+  opacity: 0.5;
+}
+
+[class*="pollContainer_"] [class*="answerSelectionIcon_"] circle {
+  fill: var(--accent-3) !important;
+}
+
+[class*="pollContainer_"] [class*="votedStyles_"] [class*="answerSelectionIcon_"] path {
+  fill: var(--bg-1) !important;
+}
+
+[class*="pollContainer_"] [class*="answer__"]:not([class*="votedStyles_"]) [class*="answerSelectionIcon_"] path {
+  fill: var(--accent-1) !important;
+}
+
+[class*="pollContainer_"] [class*="votesData_"] {
+  color: var(--text-2) !important;
+}
+
+/* --- ICONS, BADGES & NOTIFICATIONS --- */
+[class*="eyebrow"][class*="badge"][class*="expressive"] {
+  color: var(--accent-1) !important;
+  background-color: color-mix(in srgb, var(--accent-1) 15%, transparent) !important;
+}
+
+[class*="inviteButton_"] svg path,
+[class*="actionIcon_"] path[d^="M14.5 8a3 3 0"] {
+  fill: var(--accent-1) !important;
+  color: var(--accent-1) !important;
+}
+
+[class*="inviteButton_"]:hover svg path {
+  fill: var(--accent-3) !important;
+  color: var(--accent-3) !important;
+}
+
 [class*="unreadTop"],
 [class*="unreadBottom"],
 [class*="unreadMentionsIndicator"] {
   background-color: transparent !important;
 }
+
 [class*="unreadBar"],
 [class*="unreadMentionsBar"] {
   background-color: var(--accent-1) !important;
   border: 1px solid var(--border);
 }
+
 [class*="unreadBar"][class*="mention"],
 [class*="unreadMentionsBar"][class*="mention"] {
   background-color: var(--accent-1) !important;
 }
+
 [class*="unreadBar"][class*="unread"],
 [class*="unreadMentionsBar"][class*="unread"] {
   background-color: var(--bg-1) !important;
   border-color: var(--accent-1) !important;
 }
+
 [class*="unreadBar"] [class*="text"],
 [class*="unreadMentionsBar"] [class*="text"] {
   color: var(--text-1) !important;
   font-weight: 700;
 }
 
-/* Polls */
-[class*="pollContainer_"] [class*="selected__"] [class*="radioForeground_"] {
-  fill: var(--accent-3) !important;
-}
-[class*="pollContainer_"] [class*="selected__"] {
-  border: 2px solid var(--active) !important;
-}
-[class*="votedStyles_"] [class*="votePercentageBar_"] {
-  background-color: var(--active-2) !important;
-  opacity: 0.5;
-}
-[class*="pollContainer_"] [class*="answerSelectionIcon_"] circle {
-  fill: var(--accent-3) !important;
-}
-[class*="pollContainer_"] [class*="votedStyles_"] [class*="answerSelectionIcon_"] path {
-  fill: var(--bg-1) !important;
-}
-[class*="pollContainer_"] [class*="answer__"]:not([class*="votedStyles_"]) [class*="answerSelectionIcon_"] path {
-  fill: var(--accent-1) !important;
-}
-[class*="pollContainer_"] [class*="votesData_"] {
-  color: var(--text-2) !important;
-}
-[class*="pollContainer_"] [class*="votedStyles_"] [class*="answerInner_"] {
-  border: 2px solid var(--active) !important;
-}
-
-/* Server Invites */
-[class*="inviteButton_"] svg path,
-[class*="actionIcon_"] path[d^="M14.5 8a3 3 0"] {
-  fill: var(--accent-1) !important;
-  color: var(--accent-1) !important;
-}
-[class*="inviteButton_"]:hover svg path {
-  fill: var(--accent-3) !important;
-  color: var(--accent-3) !important;
-}
-
-/* ===================== /
-/ CHANNEL CONTRAST      /
-/ ===================== */
-
-/* 1. Read channels (Set to requested 90% opacity for clear visibility) */
+/* --- CHANNELS LIST --- */
 [class*="link_"] * {
-  color: color-mix(in srgb, #f4f6eb 80%, transparent) !important;
-  opacity: 0.90 !important;
+  color: #f5ece8 !important;
+  opacity: 0.65 !important;
 }
 
-/* 2. Unread channels */
 [class*="modeUnread_"] [class*="link_"] *,
 [class*="modeUnreadImportant_"] [class*="link_"] * {
-  color: #f4f6eb !important;
+  color: #f5ece8 !important;
   opacity: 1 !important;
 }
+
 [class*="modeUnread_"] [class*="name_"],
 [class*="modeUnreadImportant_"] [class*="name_"] {
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }
 
-/* 3. Selected channel */
 [class*="modeSelected_"] [class*="link_"] * {
-  color: #f4f6eb !important;
+  color: #f5ece8 !important;
   opacity: 1 !important;
 }
 
-/* 4. Muted channels */
 [class*="modeMuted_"] [class*="link_"] * {
-  color: color-mix(in srgb, #f4f6eb 45%, transparent) !important;
-  opacity: 0.55 !important;
+  color: #f5ece8 !important;
+  opacity: 0.30 !important;
 }
 
-/* 5. Direct messages (Set to requested 90% opacity for clear visibility) */
+/* --- DIRECT MESSAGES --- */
 [class*="privateChannels_"] [class*="channel_"] * {
-  color: color-mix(in srgb, #f4f6eb 80%, transparent) !important;
-  opacity: 0.90 !important;
+  color: #f5ece8 !important;
+  opacity: 0.95 !important;
 }
-[class*="privateChannels_"] [class*="selected_"] * {
-  color: #f4f6eb !important;
+
+[class*="privateChannels_"] [class*="selected_"] *,
+[class*="privateChannels_"] [class*="channel_"]:hover * {
+  color: #f5ece8 !important;
   opacity: 1 !important;
+}
+
+[class*="privateChannels_"] [class*="numberBadge_"] {
+  background-color: var(--accent-1) !important;
+  opacity: 1 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[class*="privateChannels_"] [class*="numberBadge_"] * {
+  color: var(--bg-1) !important;
+  opacity: 1 !important;
+  font-weight: 900 !important;
+  font-size: 11px !important;
+}
+
+/* --- SERVER SIDEBAR --- */
+[class*="guilds_"] [class*="wrapper_"] {
+  opacity: 0.80 !important;
+  transition: opacity 0.2s ease;
+}
+
+[class*="guilds_"] [class*="wrapper_"]:hover,
+[class*="guilds_"] [class*="selected_"] [class*="wrapper_"] {
+  opacity: 1 !important;
+}
+
+[class*="guilds_"] [class*="item_"] {
+  background-color: var(--accent-1) !important;
+  width: 4px !important;
+  border-radius: 0px !important;
 }
 
 /* Arch logo fix - ported from Midnight for System24 (was missing) */
